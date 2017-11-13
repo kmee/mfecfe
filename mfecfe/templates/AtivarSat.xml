@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Integrador>
   <Identificador>
-    <Valor></Valor>
+    <Valor>{{ consulta.numero_identificador }}</Valor>
   </Identificador>
   <Componente Nome="MF-e">
     <Metodo Nome="AtivarSAT">
@@ -9,27 +8,27 @@
         <Parametro>
           <Nome>numeroSessao</Nome>
           <!--int-->
-          <Valor></Valor>
+          <Valor>{{ consulta.numero_sessao }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>subComando</Nome>
           <!--int-->
-          <Valor></Valor>
+          <Valor>{{ consulta.tipo_certificado }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>codigoDeAtivacao</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.codigo_ativacao }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>cnpj</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.cnpj }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>cUF</Nome>
           <!--int-->
-          <Valor></Valor>
+          <Valor>{{ consulta.codigo_uf }}</Valor>
         </Parametro>
       </Parametros>
     </Metodo>

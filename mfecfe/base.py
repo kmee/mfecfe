@@ -76,7 +76,6 @@ class BibliotecaSAT(object):
         self._libsat = None
         self._caminho = caminho
         self._convencao = convencao
-        print "lib sat"
 
     @property
     def ref(self):
@@ -233,7 +232,7 @@ class FuncoesSAT(object):
                 self.__class__.__name__, name))
 
 
-    def ativar_sat(self, tipo_certificado, cnpj, codigo_uf):
+    def ativar_sat(self, identificador, tipo_certificado, cnpj, codigo_uf):
         """Função ``AtivarSAT`` conforme ER SAT, item 6.1.1.
         Ativação do equipamento SAT. Dependendo do tipo do certificado, o
         procedimento de ativação é complementado enviando-se o certificado
@@ -259,9 +258,20 @@ class FuncoesSAT(object):
         :return: Retorna *verbatim* a resposta da função SAT.
         :rtype: string
         """
-        return self.invocar__AtivarSAT(
-                self.gerar_numero_sessao(), tipo_certificado,
-                self._codigo_ativacao, cnpj, codigo_uf)
+        consulta = {
+            'numero_identificador': identificador,
+            'numero_sessao': self.gerar_numero_sessao(),
+            'tipo_certificado': tipo_certificado,
+            'codigo_ativacao': self._codigo_ativacao,
+            'cnpj': cnpj,
+            'codigo_uf': codigo_uf,
+        }
+
+        xml = render_xml(self._path, 'AtivarSat.xml', True, consulta=consulta)
+        print xml
+        #return self.invocar__AtivarSAT(
+         #       self.gerar_numero_sessao(), tipo_certificado,
+          #      self._codigo_ativacao, cnpj, codigo_uf)
 
 
     def comunicar_certificado_icpbrasil(self, certificado):
@@ -334,9 +344,9 @@ class FuncoesSAT(object):
                 'numero_sessao': self.gerar_numero_sessao(),
             }
         xml = render_xml(self._path, 'ConsultarMFe.xml', True, consulta=consulta)
+        print xml
         # Colocar xml na pasta de input
         # xml.write(self._path + str(self.gerar_numero_sessao()) + 'test.xml', xml_declaration=True, encoding='UTF-8')
-        print xml
         # Ler o retorno
         # retornar o retorno
         # return self.invocar__ConsultarSAT(self.gerar_numero_sessao())
@@ -412,7 +422,7 @@ class FuncoesSAT(object):
                 self.gerar_numero_sessao(), self._codigo_ativacao, conf_xml)
 
 
-    def associar_assinatura(self, sequencia_cnpj, assinatura_ac):
+    def associar_assinatura(self, identificador, sequencia_cnpj, assinatura_ac):
         """Função ``AssociarAssinatura`` conforme ER SAT, item 6.1.10.
         Associação da assinatura do aplicativo comercial.
 
@@ -426,20 +436,38 @@ class FuncoesSAT(object):
         :return: Retorna *verbatim* a resposta da função SAT.
         :rtype: string
         """
-        return self.invocar__AssociarAssinatura(
-                self.gerar_numero_sessao(), self._codigo_ativacao,
-                sequencia_cnpj, assinatura_ac)
+        consulta = {
+            'numero_identificador': identificador,
+            'numero_sessao': self.gerar_numero_sessao(),
+            'codigo_ativacao': self._codigo_ativacao,
+            'sequencia_cnpj': sequencia_cnpj,
+            'assinatura_ac': assinatura_ac,
+        }
+        xml = render_xml(self._path, 'AssociarAssinatura.xml',
+                         True, consulta = consulta)
+        print xml
+        #return self.invocar__AssociarAssinatura(
+         #       self.gerar_numero_sessao(), self._codigo_ativacao,
+          #      sequencia_cnpj, assinatura_ac)
 
 
-    def atualizar_software_sat(self):
+    def atualizar_software_sat(self, identificador):
         """Função ``AtualizarSoftwareSAT`` conforme ER SAT, item 6.1.11.
         Atualização do software do equipamento SAT.
 
         :return: Retorna *verbatim* a resposta da função SAT.
         :rtype: string
         """
-        return self.invocar__AtualizarSoftwareSAT(
-                self.gerar_numero_sessao(), self._codigo_ativacao)
+        consulta = {
+            'numero_identificador': identificador,
+            'numero_sessao': self.gerar_numero_sessao(),
+            'codigo_ativacao': self._codigo_ativacao,
+        }
+
+        xml = render_xml(self._path, 'AtualizarSoftwareSAT.xml', True, consulta=consulta)
+        print xml
+        #return self.invocar__AtualizarSoftwareSAT(
+                #self.gerar_numero_sessao(), self._codigo_ativacao)
 
 
     def extrair_logs(self):
@@ -453,15 +481,23 @@ class FuncoesSAT(object):
                 self.gerar_numero_sessao(), self._codigo_ativacao)
 
 
-    def bloquear_sat(self):
+    def bloquear_sat(self, identificador):
         """Função ``BloquearSAT`` conforme ER SAT, item 6.1.13. Bloqueio
         operacional do equipamento SAT.
 
         :return: Retorna *verbatim* a resposta da função SAT.
         :rtype: string
         """
-        return self.invocar__BloquearSAT(
-                self.gerar_numero_sessao(), self._codigo_ativacao)
+        consulta = {
+            'numero_identificador': identificador,
+            'numero_sessao': self.gerar_numero_sessao(),
+            'codigo_ativacao': self._codigo_ativacao,
+        }
+        xml = render_xml(self._path, 'BloquearSAT.xml', True, consulta=consulta)
+        print xml
+
+        #return self.invocar__BloquearSAT(
+                #self.gerar_numero_sessao(), self._codigo_ativacao)
 
 
     def desbloquear_sat(self):
