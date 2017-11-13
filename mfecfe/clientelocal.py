@@ -43,7 +43,7 @@ class ClienteSATLocal(FuncoesSAT):
         super(ClienteSATLocal, self).__init__(*args, **kwargs)
 
 
-    def ativar_sat(self, identificador, tipo_certificado, cnpj, codigo_uf):
+    def ativar_sat(self, tipo_certificado, cnpj, codigo_uf):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.ativar_sat`.
 
         :return: Uma resposta SAT especilizada em ``AtivarSAT``.
@@ -51,7 +51,8 @@ class ClienteSATLocal(FuncoesSAT):
         """
 
         retorno = super(ClienteSATLocal, self).ativar_sat(
-                identificador, tipo_certificado, cnpj, codigo_uf)
+                tipo_certificado, cnpj, codigo_uf)
+        pass
         # return RespostaAtivarSAT.analisar(retorno)
 
 
@@ -87,13 +88,13 @@ class ClienteSATLocal(FuncoesSAT):
         return RespostaCancelarUltimaVenda.analisar(retorno)
 
 
-    def consultar_sat(self, identificador):
+    def consultar_sat(self):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.consultar_sat`.
 
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
-        retorno = super(ClienteSATLocal, self).consultar_sat(identificador)
+        retorno = super(ClienteSATLocal, self).consultar_sat()
         print "Retorno"
         return False
         # return RespostaSAT.consultar_sat(retorno)
@@ -119,14 +120,14 @@ class ClienteSATLocal(FuncoesSAT):
         return RespostaConsultarStatusOperacional.analisar(retorno)
 
 
-    def consultar_numero_sessao(self, identificador, numero_sessao):
+    def consultar_numero_sessao(self, numero_sessao):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.consultar_numero_sessao`.
 
         :return: Uma resposta SAT que irá depender da sessão consultada.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         retorno = super(ClienteSATLocal, self).\
-                consultar_numero_sessao(identificador, numero_sessao)
+                consultar_numero_sessao(numero_sessao)
         # return RespostaConsultarNumeroSessao.analisar(retorno)
 
 
@@ -141,26 +142,26 @@ class ClienteSATLocal(FuncoesSAT):
         return RespostaSAT.configurar_interface_de_rede(retorno)
 
 
-    def associar_assinatura(self, identificador, sequencia_cnpj, assinatura_ac):
+    def associar_assinatura(self, sequencia_cnpj, assinatura_ac):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.associar_assinatura`.
 
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         retorno = super(ClienteSATLocal, self).\
-                associar_assinatura(identificador, sequencia_cnpj, assinatura_ac)
+                associar_assinatura(sequencia_cnpj, assinatura_ac)
         # (!) resposta baseada na redação com efeitos até 31-12-2016
         # return RespostaSAT.associar_assinatura(retorno)
 
 
-    def atualizar_software_sat(self, identificador):
+    def atualizar_software_sat(self):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.atualizar_software_sat`.
 
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
-        retorno = super(ClienteSATLocal, self).atualizar_software_sat(identificador)
-        #return RespostaSAT.atualizar_software_sat(retorno, identificador)
+        retorno = super(ClienteSATLocal, self).atualizar_software_sat()
+        #return RespostaSAT.atualizar_software_sat(retorno)
 
 
     def extrair_logs(self):
@@ -173,13 +174,13 @@ class ClienteSATLocal(FuncoesSAT):
         return RespostaExtrairLogs.analisar(retorno)
 
 
-    def bloquear_sat(self, identificador):
+    def bloquear_sat(self):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.bloquear_sat`.
 
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
-        retorno = super(ClienteSATLocal, self).bloquear_sat(identificador)
+        retorno = super(ClienteSATLocal, self).bloquear_sat()
         #return RespostaSAT.bloquear_sat(retorno)
 
 

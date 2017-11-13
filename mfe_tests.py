@@ -13,22 +13,21 @@ cliente = ClienteSATLocal(
 #     codigo_ativacao='12345678'
 # )
 
-identificador = '99999'
-resposta = cliente.consultar_sat(identificador)
+resposta = cliente.consultar_sat()
 print (resposta)
 
-resposta = cliente.consultar_numero_sessao(identificador, '99999')
+resposta = cliente.consultar_numero_sessao('99999')
 print (resposta)
 
 
-resposta = cliente.associar_assinatura(identificador, '99999', '99999')
+resposta = cliente.associar_assinatura('99999', '99999')
 print (resposta)
 
-resposta = cliente.ativar_sat(identificador, 'satcomum.constantes.CERTIFICADO_ACSAT_SEFAZ', '11111111111111', '35')
+resposta = cliente.ativar_sat('satcomum.constantes.CERTIFICADO_ACSAT_SEFAZ', '11111111111111', '35')
 print (resposta)
 
-resposta = cliente.atualizar_software_sat(identificador)
+resposta = cliente.atualizar_software_sat()
 print (resposta)
 
-resposta = cliente.bloquear_sat(identificador)
+resposta = cliente.bloquear_sat()
 print (resposta)

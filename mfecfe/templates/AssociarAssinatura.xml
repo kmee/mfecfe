@@ -1,6 +1,6 @@
 <Integrador>
   <Identificador>
-    <Valor>{{ consulta.numero_identificador }}</Valor>
+    <Valor>{{ numero_identificador }}</Valor>
   </Identificador>
   <Componente Nome="MF-e">
     <Metodo Nome="AssociarAssinatura">
