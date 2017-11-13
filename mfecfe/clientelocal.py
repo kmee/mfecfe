@@ -117,7 +117,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.consultarstatusoperacional.RespostaConsultarStatusOperacional
         """
         retorno = super(ClienteSATLocal, self).consultar_status_operacional()
-        return RespostaConsultarStatusOperacional.analisar(retorno)
+        # return RespostaConsultarStatusOperacional.analisar(retorno)
 
 
     def consultar_numero_sessao(self, numero_sessao):
@@ -139,7 +139,7 @@ class ClienteSATLocal(FuncoesSAT):
         """
         retorno = super(ClienteSATLocal, self).\
                 configurar_interface_de_rede(configuracao)
-        return RespostaSAT.configurar_interface_de_rede(retorno)
+        # return RespostaSAT.configurar_interface_de_rede(retorno)
 
 
     def associar_assinatura(self, sequencia_cnpj, assinatura_ac):

@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Integrador>
   <Identificador>
-    <Valor></Valor>
+    <Valor>{{ numero_identificador }}</Valor>
   </Identificador>
   <Componente Nome="MF-e">
     <Metodo Nome="CancelarUltimaVenda">
@@ -9,22 +8,22 @@
         <Parametro>
           <Nome>numeroSessao</Nome>
           <!--int-->
-          <Valor></Valor>
+          <Valor>{{ consulta.numero_sessao }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>codigoDeAtivacao</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.codigo_ativacao }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>chave</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.chave_cfe }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>dadosCancelamento</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.cfe_canc }}</Valor>
         </Parametro>
       </Parametros>
     </Metodo>

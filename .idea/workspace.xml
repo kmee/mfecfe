@@ -2,20 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6abbfcf-3a60-4cc9-8ae3-c6aea9359412" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ConfigurarInterfaceDeRedeMFE.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/ConfigurarInterfaceDeRedeMFE.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ConsultarStatusOperacional.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/ConsultarStatusOperacional.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ConsultarStatusOperacionalMFE.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/ConsultarStatusOperacionalMFE.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/DesbloquearSAT.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/DesbloquearSAT.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/EnviarDadosVenda.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/EnviarDadosVenda.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/EnviarStatusAC.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/EnviarStatusAC.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ExtrairLogs.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/ExtrairLogs.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/TesteFimAFim.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/TesteFimAFim.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/TrocarCodigoDeAtivacao.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/TrocarCodigoDeAtivacao.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/ConsultarMFe.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/ConsultarMFe.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/AtivarMFE.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/AtivarMFE.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/AtualizarSoftwareMFe.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/AtualizarSoftwareMFe.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/BloquearMFe.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/BloquearMFe.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/CancelarUltimaVenda.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/CancelarUltimaVenda.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ComunicarCertificadoICPBRASIL.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/ComunicarCertificadoICPBRASIL.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ConfigurarInterfaceDeRede.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/ConfigurarInterfaceDeRede.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ConsultarSAT.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/ConsultarSAT.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/DesbloquearMFe.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/DesbloquearMFe.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mfe_tests.py" afterPath="$PROJECT_DIR$/mfe_tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mfecfe/base.py" afterPath="$PROJECT_DIR$/mfecfe/base.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mfecfe/clientelocal.py" afterPath="$PROJECT_DIR$/mfecfe/clientelocal.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mfecfe/templates/ConsultarNumeroSessao.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/ConsultarNumeroSessao.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/AtualizarSoftwareMFe.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/mfe/todo/AtualizarSoftwareMFe.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mfecfe/templates/ConsultarStatusOperacional.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/ConsultarStatusOperacional.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mfecfe/templates/EnviarDadosVenda.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/EnviarDadosVenda.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mfecfe/templates/TesteFimAFim.xml" afterPath="$PROJECT_DIR$/mfecfe/templates/TesteFimAFim.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,12 +27,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mfecfe/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2320">
-              <caret line="161" column="24" lean-forward="false" selection-start-line="161" selection-start-column="18" selection-end-line="161" selection-end-column="24" />
+            <state relative-caret-position="-1163">
+              <caret line="46" column="33" lean-forward="false" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -39,11 +41,51 @@
       <file leaf-file-name="mfe_tests.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mfe_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-122">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding>
-                <element signature="e#24#56#0" expanded="true" />
+                <element signature="e#24#37#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clientelocal.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mfecfe/clientelocal.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="106" column="65" lean-forward="true" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DesbloquearMFe.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/DesbloquearMFe.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComunicarCertificadoICPBRASIL.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/ComunicarCertificadoICPBRASIL.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="21" column="41" lean-forward="false" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CancelarUltimaVenda.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mfecfe/templates/CancelarUltimaVenda.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -52,36 +94,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>consultar_sat</find>
-      <find>desbloquea</find>
-      <find>testef</find>
-      <find>extrair</find>
-      <find>consultar_status</find>
-      <find>blo</find>
-      <find>ClienteSATLocal</find>
-      <find>testefimafim</find>
-      <find>extrair_</find>
-      <find>enviardadosvenda</find>
-      <find>consultarsta</find>
-      <find>extrai</find>
       <find>extrair_logs</find>
-      <find>enviar_dados_venda</find>
-      <find>DesbloquearSAT</find>
-      <find>teste_fim_a_fim</find>
       <find>desbloquear_sat</find>
-      <find>ativarmfe</find>
-      <find>atualizar</find>
-      <find>enviar</find>
-      <find>enviar_s</find>
-      <find>desbloquear</find>
-      <find>consultarstat</find>
-      <find>bloquear</find>
+      <find>consultar_sat</find>
+      <find>identificador</find>
+      <find>ativar_sat</find>
+      <find>bloquear_sat</find>
+      <find>associa</find>
+      <find>enviar_dados_venda</find>
+      <find>consultarmfe</find>
+      <find>teste_fim_a_fim</find>
+      <find>dadosvenda</find>
+      <find>consultar_</find>
+      <find>atualizar_software_sat</find>
+      <find>fima</find>
+      <find>fia</find>
+      <find>cliente</find>
+      <find>codigo_ativacao</find>
+      <find>consultar_status_operacional</find>
+      <find>dados_venda</find>
+      <find>cance</find>
+      <find>chave_cfe</find>
+      <find>cliente.</find>
+      <find>cancel</find>
       <find>cancelar</find>
-      <find>comunicarcerti</find>
-      <find>configuracao</find>
-      <find>consultar</find>
-      <find>desbloque</find>
-      <find>enviarst</find>
+      <find>comunicar</find>
+      <find>com</find>
+      <find>desbloquear_m</find>
+      <find>comun</find>
+      <find>configurarinterfacederedemf</find>
+      <find>tipoInter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -97,17 +139,24 @@
         <option value="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ConsultarStatusOperacional.xml" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/mfecfe/templates/mfe/todo/TrocarCodigoDeAtivacao.xml" />
-        <option value="$PROJECT_DIR$/mfecfe/clientelocal.py" />
-        <option value="$PROJECT_DIR$/mfecfe/base.py" />
         <option value="$PROJECT_DIR$/mfecfe/templates/ExtrairLogs.xml" />
-        <option value="$PROJECT_DIR$/mfecfe/templates/ConsultarStatusOperacional.xml" />
         <option value="$PROJECT_DIR$/mfecfe/templates/DesbloquearSAT.xml" />
-        <option value="$PROJECT_DIR$/mfecfe/templates/EnviarDadosVenda.xml" />
-        <option value="$PROJECT_DIR$/mfecfe/templates/TesteFimAFim.xml" />
         <option value="$PROJECT_DIR$/mfecfe/templates/TrocarCodigoDeAtivacao.xml" />
-        <option value="$PROJECT_DIR$/mfe_tests.py" />
         <option value="$PROJECT_DIR$/mfecfe/templates/mfe/todo/AtualizarSoftwareMFe.xml" />
         <option value="$PROJECT_DIR$/mfecfe/templates/ConsultarNumeroSessao.xml" />
+        <option value="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ConfigurarInterfaceDeRede.xml" />
+        <option value="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ComunicarCertificadoICPBRASIL.xml" />
+        <option value="$PROJECT_DIR$/mfecfe/templates/mfe/todo/ConsultarSAT.xml" />
+        <option value="$PROJECT_DIR$/mfecfe/templates/ConsultarSAT.xml" />
+        <option value="$PROJECT_DIR$/mfecfe/rede.py" />
+        <option value="$PROJECT_DIR$/mfecfe/templates/ConsultarStatusOperacional.xml" />
+        <option value="$PROJECT_DIR$/mfecfe/templates/TesteFimAFim.xml" />
+        <option value="$PROJECT_DIR$/mfecfe/clientelocal.py" />
+        <option value="$PROJECT_DIR$/mfecfe/templates/EnviarDadosVenda.xml" />
+        <option value="$PROJECT_DIR$/mfecfe/base.py" />
+        <option value="$PROJECT_DIR$/mfecfe/templates/mfe/todo/CancelarUltimaVenda.xml" />
+        <option value="$PROJECT_DIR$/mfecfe/templates/CancelarUltimaVenda.xml" />
+        <option value="$PROJECT_DIR$/mfe_tests.py" />
       </list>
     </option>
   </component>
@@ -133,7 +182,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,30 +215,23 @@
               <item name="mfe" type="462c0819:PsiDirectoryNode" />
               <item name="nao_existe" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="mfesat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mfesat" type="462c0819:PsiDirectoryNode" />
-              <item name="mfecfe" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="mfe" type="462c0819:PsiDirectoryNode" />
-              <item name="todo" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mfe_tests.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe" />
-      <recent name="$PROJECT_DIR$/mfecfe/templates/mfe/todo" />
       <recent name="$PROJECT_DIR$/mfecfe/templates" />
+      <recent name="$PROJECT_DIR$/mfecfe/templates/mfe/todo" />
       <recent name="$PROJECT_DIR$/mfecfe/templates/mfe" />
     </key>
   </component>
@@ -240,13 +281,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1303" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32031873" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3258964" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3437014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3437014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -255,10 +295,10 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -292,14 +332,25 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/todo/AssociarAssinatura.xml">
+    <entry file="file://$PROJECT_DIR$/mfecfe/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="2736">
+          <caret line="161" column="24" lean-forward="false" selection-start-line="161" selection-start-column="18" selection-end-line="161" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mfe_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#39#71#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/todo/AssociarAssinatura.xml" />
     <entry file="file://$PROJECT_DIR$/mfecfe/xml.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-540">
@@ -312,7 +363,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -320,7 +370,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-846">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -348,34 +397,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/clientelocal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="206" column="52" lean-forward="true" selection-start-line="206" selection-start-column="52" selection-end-line="206" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/ConsultarStatusOperacional.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mfecfe/templates/DesbloquearSAT.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/EnviarDadosVenda.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -388,31 +413,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/TesteFimAFim.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/todo/ConfigurarInterfaceDeRede.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/todo/ConsultarSAT.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/todo/AtivarMFE.xml">
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/AtivarMFE.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -428,39 +429,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/todo/ComunicarCertificadoICPBRASIL.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/todo/CancelarUltimaVenda.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/todo/BloquearMFe.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/ConsultarMFe.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/AssociarAssinatura.xml">
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/BloquearMFe.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -469,14 +438,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mfecfe/templates/AtualizarSoftwareSAT.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/AtivarSat.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -500,26 +461,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/todo/AtualizarSoftwareMFe.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/EnviarStatusAC.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/todo/DesbloquearMFe.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -532,20 +477,148 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/AtualizarSoftwareMFe.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/AtivarSat.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/ConsultarSAT.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/ConfigurarInterfaceDeRede.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/rede.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1170">
+          <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/resposta/consultarstatusoperacional.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/ConsultarStatusOperacional.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/TesteFimAFim.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/ConsultarMFe.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/AssociarAssinatura.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/entidades.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-918">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/EnviarDadosVenda.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/CancelarUltimaVenda.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/ComunicarCertificadoICPBRASIL.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="41" lean-forward="false" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/templates/mfe/nao_existe/DesbloquearMFe.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mfecfe/clientelocal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="106" column="65" lean-forward="true" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mfecfe/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2320">
-          <caret line="161" column="24" lean-forward="false" selection-start-line="161" selection-start-column="18" selection-end-line="161" selection-end-column="24" />
+        <state relative-caret-position="-1163">
+          <caret line="46" column="33" lean-forward="false" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mfe_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-122">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
-            <element signature="e#24#56#0" expanded="true" />
+            <element signature="e#24#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

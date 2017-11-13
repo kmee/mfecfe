@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import satcfe
+
 from mfecfe import BibliotecaSAT
 from mfecfe import ClienteSATLocal
 
@@ -28,15 +30,27 @@ print (resposta)
 resposta = cliente.extrair_logs()
 print (resposta)
 
-# resposta = cliente.teste_fim_a_fim(identificador)
-# print (resposta)
+resposta = cliente.teste_fim_a_fim(u'CFeVenda')
+print (resposta)
 
-# resposta = cliente.enviar_dados_venda(identificador, )
-# print (resposta)
+resposta = cliente.enviar_dados_venda(u'CFeVenda')
+print (resposta)
 
 resposta = cliente.desbloquear_sat()
 print (resposta)
 
-# resposta = cliente.consultar_status_operacional(identificador)
-# print (resposta)
+resposta = cliente.consultar_status_operacional()
+print (resposta)
+
+resposta = cliente.consultar_sat()
+print resposta
+
+resposta = cliente.configurar_interface_de_rede('tipoInter:')
+print resposta
+
+resposta = cliente.cancelar_ultima_venda('CFe11087746478373757726265545868587463856478463', 'segundo')
+print resposta
+
+# resposta = cliente.comunicar_certificado_icpbrasil('')
+# print resposta
 

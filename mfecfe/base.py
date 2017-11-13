@@ -296,7 +296,7 @@ class FuncoesSAT(object):
         }
         return self.comando_sat('ComunicarCertificadoICPBRASIL.xml', consulta=consulta)
 
-    def enviar_dados_venda(self, identificador, dados_venda):
+    def enviar_dados_venda(self, dados_venda):
         """Função ``EnviarDadosVenda`` conforme ER SAT, item 6.1.3. Envia o
         CF-e de venda para o equipamento SAT, que o enviará para autorização
         pela SEFAZ.
@@ -316,7 +316,7 @@ class FuncoesSAT(object):
             'codigo_ativacao': self._codigo_ativacao,
             'cfe_venda': cfe_venda,
         }
-        return self.comando_sat('CancelarUltimaVenda.xml', consulta=consulta)
+        return self.comando_sat('EnviarDadosVenda.xml', consulta=consulta)
 
     def cancelar_ultima_venda(self, chave_cfe, dados_cancelamento):
         """Função ``CancelarUltimaVenda`` conforme ER SAT, item 6.1.4. Envia o
@@ -357,9 +357,9 @@ class FuncoesSAT(object):
         consulta = {
                 'numero_sessao': self.gerar_numero_sessao(),
             }
-        return self.comando_sat('ConsultarMFe.xml', consulta=consulta)
+        return self.comando_sat('ConsultarSAT.xml', consulta=consulta)
 
-    def teste_fim_a_fim(self, identificador, dados_venda):
+    def teste_fim_a_fim(self, dados_venda):
         """Função ``TesteFimAFim`` conforme ER SAT, item 6.1.6. Teste de
         comunicação entre a AC, o equipamento SAT e a SEFAZ.
 
@@ -476,7 +476,7 @@ class FuncoesSAT(object):
             'numero_sessao': self.gerar_numero_sessao(),
             'codigo_ativacao': self._codigo_ativacao,
         }
-        return self.comando_sat('AtualizarSoftwareSAT.xml', consulta=consulta)
+        return self.comando_sat('ExtrairLogs.xml', consulta=consulta)
 
     def bloquear_sat(self):
         """Função ``BloquearSAT`` conforme ER SAT, item 6.1.13. Bloqueio
