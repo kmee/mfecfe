@@ -1,6 +1,6 @@
 __pycache__/
 .cache/
-
+/docs/
 /build/
 /dist/
 /satcfe.egg-info/

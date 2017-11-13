@@ -46,11 +46,11 @@ def render_xml(path, template_name, remove_empty, **data):
             parent = elem.getparent()
             if recursively_empty(elem):
                 parent.remove(elem)
-        return etree.tostring(tree, xml_declaration=True, encoding='UTF-8', standalone="yes")
+        return etree.ElementTree(tree)
     for element in tree.iter("*"):  # remove espaços em branco
         if element.text is not None and not element.text.strip():
             element.text = None
-    return etree.tostring(tree, xml_declaration=True, encoding='UTF-8', standalone="yes")
+    return etree.ElementTree(tree)
 
 
 def sanitize_response(response):

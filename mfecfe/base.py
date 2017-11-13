@@ -234,10 +234,13 @@ class FuncoesSAT(object):
     def comando_sat(self, template, **kwargs):
         kwargs['numero_identificador'] = 999999
         xml = render_xml(self._path, template, True, **kwargs)
+
         # xml = render_xml(self._path, 'ConsultarMFe.xml', True, consulta=consulta)
         # print xml
         # Colocar xml na pasta de input
-        # xml.write(self._path + str(self.gerar_numero_sessao()) + 'test.xml', xml_declaration=True, encoding='UTF-8')
+        from os.path import expanduser
+        home = expanduser("~")
+        xml.write(home + '/Integrador/input/' + str(self.gerar_numero_sessao()) + '.xml', xml_declaration=True, encoding='UTF-8')
         # Ler o retorno
         # retornar o retorno
         # return self.invocar__ConsultarSAT(self.gerar_numero_sessao())
