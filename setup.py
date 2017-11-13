@@ -70,7 +70,7 @@ class PyTest(TestCommand):
 
 
 setup(
-        name='satcfe',
+        name='mfecfe',
         version=read_version(),
         description=u'Abstração do acesso ao equipamento SAT (SAT-CF-e)',
         long_description=long_description,
