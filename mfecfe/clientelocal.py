@@ -171,7 +171,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.extrairlogs.RespostaExtrairLogs
         """
         retorno = super(ClienteSATLocal, self).extrair_logs()
-        return RespostaExtrairLogs.analisar(retorno)
+        # return RespostaExtrairLogs.analisar(retorno)
 
 
     def bloquear_sat(self):
@@ -191,7 +191,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         retorno = super(ClienteSATLocal, self).desbloquear_sat()
-        return RespostaSAT.desbloquear_sat(retorno)
+        # return RespostaSAT.desbloquear_sat(retorno)
 
 
     def trocar_codigo_de_ativacao(self, novo_codigo_ativacao,

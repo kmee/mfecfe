@@ -1,35 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Integrador>
   <Identificador>
-    <Valor></Valor>
+    <Valor>{ { numero_identificador } }</Valor>
   </Identificador>
   <Componente Nome="MF-e">
-    <Metodo Nome="TrocarCodigoDeAtivacao">
+    <Metodo Nome="EnviarDadosVenda">
       <Parametros>
         <Parametro>
           <Nome>numeroSessao</Nome>
           <!--int-->
-          <Valor></Valor>
+          <Valor>{ { consulta.numero_sessao } }</Valor>
         </Parametro>
         <Parametro>
           <Nome>codigoDeAtivacao</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{ { consulta.codigo_ativacao } }</Valor>
         </Parametro>
         <Parametro>
-          <Nome>opcao</Nome>
-          <!--int-->
-          <Valor></Valor>
-        </Parametro>
-        <Parametro>
-          <Nome>novoCodigo</Nome>
+          <Nome>dadosVenda</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{ { consulta.dados_venda } }</Valor>
         </Parametro>
         <Parametro>
-          <Nome>confNovoCodigo</Nome>
+          <Nome>nrDocumento</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{ { consulta.cfe_venda } }</Valor>
         </Parametro>
       </Parametros>
     </Metodo>

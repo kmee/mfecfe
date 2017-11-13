@@ -296,7 +296,7 @@ class FuncoesSAT(object):
         }
         return self.comando_sat('ComunicarCertificadoICPBRASIL.xml', consulta=consulta)
 
-    def enviar_dados_venda(self, dados_venda):
+    def enviar_dados_venda(self, identificador, dados_venda):
         """Função ``EnviarDadosVenda`` conforme ER SAT, item 6.1.3. Envia o
         CF-e de venda para o equipamento SAT, que o enviará para autorização
         pela SEFAZ.
@@ -308,8 +308,8 @@ class FuncoesSAT(object):
         :rtype: string
         """
         cfe_venda = dados_venda \
-                if isinstance(dados_venda, basestring) \
-                else dados_venda.documento()
+            if isinstance(dados_venda, basestring) \
+            else dados_venda.documento()
 
         consulta = {
             'numero_sessao': self.gerar_numero_sessao(),
@@ -317,7 +317,6 @@ class FuncoesSAT(object):
             'cfe_venda': cfe_venda,
         }
         return self.comando_sat('CancelarUltimaVenda.xml', consulta=consulta)
-
 
     def cancelar_ultima_venda(self, chave_cfe, dados_cancelamento):
         """Função ``CancelarUltimaVenda`` conforme ER SAT, item 6.1.4. Envia o
@@ -360,7 +359,7 @@ class FuncoesSAT(object):
             }
         return self.comando_sat('ConsultarMFe.xml', consulta=consulta)
 
-    def teste_fim_a_fim(self, dados_venda):
+    def teste_fim_a_fim(self, identificador, dados_venda):
         """Função ``TesteFimAFim`` conforme ER SAT, item 6.1.6. Teste de
         comunicação entre a AC, o equipamento SAT e a SEFAZ.
 
@@ -371,8 +370,8 @@ class FuncoesSAT(object):
         :rtype: string
         """
         cfe_venda = dados_venda \
-                if isinstance(dados_venda, basestring) \
-                else dados_venda.documento()
+            if isinstance(dados_venda, basestring) \
+            else dados_venda.documento()
 
         consulta = {
             'numero_sessao': self.gerar_numero_sessao(),
@@ -394,8 +393,6 @@ class FuncoesSAT(object):
             }
         return self.comando_sat('ConsultarStatusOperacional.xml', consulta=consulta)
 
-
-
     def consultar_numero_sessao(self, numero_sessao):
         """Função ``ConsultarNumeroSessao`` conforme ER SAT, item 6.1.8.
         Consulta o equipamento SAT por um número de sessão específico.
@@ -406,7 +403,6 @@ class FuncoesSAT(object):
         :rtype: string
         """
         consulta = {
-            'numero_sessao': self.gerar_numero_sessao(),
             'codigo_ativacao': self._codigo_ativacao,
             'numero_sessao': numero_sessao,
             }
@@ -568,7 +564,6 @@ class FuncoesSAT(object):
                 raise ValueError('Codigo de ativacao de emergencia invalido: '
                         '{!r} (opcao={!r})'.format(codigo_emergencia, opcao))
 
-
         consulta = {
             'numero_sessao': self.gerar_numero_sessao(),
             'codigo_ativacao': self._codigo_ativacao,
@@ -576,7 +571,3 @@ class FuncoesSAT(object):
             'novo_codigo_ativacao': self.novo_codigo_ativacao,
         }
         return self.comando_sat('TrocarCodigoDeAtivacao.xml', consulta=consulta)
-
-        # return self.invocar__TrocarCodigoDeAtivacao(
-        #         self.gerar_numero_sessao(), codigo_ativacao, opcao,
-        #         novo_codigo_ativacao, novo_codigo_ativacao)
