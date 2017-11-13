@@ -18,12 +18,12 @@
         <Parametro>
           <Nome>dadosVenda</Nome>
           <!--string-->
-          <Valor>{{ consulta.dados_venda }}</Valor>
+          <Valor><![CDATA[{{ consulta.cfe_venda }}]]></Valor>
         </Parametro>
         <Parametro>
           <Nome>nrDocumento</Nome>
           <!--string-->
-          <Valor>{ { consulta.cfe_venda } }</Valor>
+          <Valor>{{ consulta.numero_documento }}</Valor>
         </Parametro>
       </Parametros>
     </Metodo>

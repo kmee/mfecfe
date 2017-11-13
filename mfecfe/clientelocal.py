@@ -74,7 +74,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.enviardadosvenda.RespostaEnviarDadosVenda
         """
         retorno = super(ClienteSATLocal, self).enviar_dados_venda(dados_venda)
-        return RespostaEnviarDadosVenda.analisar(retorno)
+        # return RespostaEnviarDadosVenda.analisar(retorno)
 
 
     def cancelar_ultima_venda(self, chave_cfe, dados_cancelamento):
@@ -85,7 +85,7 @@ class ClienteSATLocal(FuncoesSAT):
         """
         retorno = super(ClienteSATLocal, self).\
                 cancelar_ultima_venda(chave_cfe, dados_cancelamento)
-        return RespostaCancelarUltimaVenda.analisar(retorno)
+        # return RespostaCancelarUltimaVenda.analisar(retorno)
 
 
     def consultar_sat(self):
