@@ -1,6 +1,6 @@
 <Integrador>
   <Identificador>
-    <Valor>{ { numero_identificador } }</Valor>
+    <Valor>{{ numero_identificador }}</Valor>
   </Identificador>
   <Componente Nome="MF-e">
     <Metodo Nome="ConsultarStatusOperacional">
@@ -8,12 +8,12 @@
         <Parametro>
           <Nome>numeroSessao</Nome>
           <!--int-->
-          <Valor>{ { consulta.numero_sessao } }</Valor>
+          <Valor>{{ consulta.numero_sessao }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>codigoDeAtivacao</Nome>
           <!--string-->
-          <Valor>{ { consulta.codigo_ativacao } }</Valor>
+          <Valor>{{ consulta.codigo_ativacao }}</Valor>
         </Parametro>
       </Parametros>
     </Metodo>
