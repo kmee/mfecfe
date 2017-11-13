@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Integrador>
+  <Identificador>
+    <Valor>999999</Valor>
+  </Identificador>
+  <IntegradorResposta>
+    <Codigo>AP</Codigo>
+    <Valor>Arquivo processado</Valor>
+  </IntegradorResposta>
+  <Resposta>
+    <retorno>099999|11003|Sessao nao existe||</retorno>
+  </Resposta>
+</Integrador>

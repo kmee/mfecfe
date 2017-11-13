@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Integrador>
+  <Identificador>
+    <Valor>999999</Valor>
+  </Identificador>
+  <IntegradorResposta>
+    <Codigo>AP</Codigo>
+    <Valor>Arquivo processado</Valor>
+  </IntegradorResposta>
+  <Resposta>
+    <retorno>285022|10000|Resposta com sucesso|||900012555|DHCP|010.042.000.133|40:44:84:33:55:25|255.255.255.000|010.042.000.001|010.042.000.001|010.042.000.001|CONECTADO|ALTO|1 GB|5 MB|20171113170816|01.00.00|00.07|35171108723218000186599000125550000082277900|00000000000000000000000000000000000000000000|00000000000000000000000000000000000000000000|20171113161130|20171113164418|20170622|20220622|0</retorno>
+  </Resposta>
+</Integrador>

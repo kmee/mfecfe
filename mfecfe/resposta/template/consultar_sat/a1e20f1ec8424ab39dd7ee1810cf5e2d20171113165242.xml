@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Integrador>
+  <Identificador>
+    <Valor>999999</Valor>
+  </Identificador>
+  <IntegradorResposta>
+    <Codigo>AP</Codigo>
+    <Valor>Arquivo processado</Valor>
+  </IntegradorResposta>
+  <Resposta>
+    <retorno>849051|08000|SAT em operacao||</retorno>
+  </Resposta>
+</Integrador>
