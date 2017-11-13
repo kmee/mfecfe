@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Integrador>
+  <Identificador>
+    <Valor></Valor>
+  </Identificador>
+  <Componente Nome="VFP-e">
+    <Metodo Nome="RespostaFiscal">
+      <Construtor>
+        <Parametros>
+          <Parametro>
+            <Nome>chaveAcessoValidador</Nome>
+            <!--String-->
+            <Valor></Valor>
+          </Parametro>
+        </Parametros>
+      </Construtor>
+      <Parametros>
+        <Parametro>
+          <Nome>idFila</Nome>
+          <!--int-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>ChaveAcesso</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>Nsu</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>NumerodeAprovacao</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>Bandeira</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>Adquirente</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>Cnpj</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>ImpressaoFiscal</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>NumeroDocumento</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+      </Parametros>
+    </Metodo>
+  </Componente>
+</Integrador>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Integrador>
+  <Identificador>
+    <Valor></Valor>
+  </Identificador>
+  <Componente Nome="MF-e">
+    <Metodo Nome="ConsultarSAT">
+      <Parametros>
+        <Parametro>
+          <Nome>numeroSessao</Nome>
+          <!--int-->
+          <Valor></Valor>
+        </Parametro>
+      </Parametros>
+    </Metodo>
+  </Componente>
+</Integrador>

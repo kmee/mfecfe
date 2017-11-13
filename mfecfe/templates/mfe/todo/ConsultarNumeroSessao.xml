@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Integrador>
+  <Identificador>
+    <Valor></Valor>
+  </Identificador>
+  <Componente Nome="MF-e">
+    <Metodo Nome="ConsultarNumeroSessao">
+      <Parametros>
+        <Parametro>
+          <Nome>numeroSessao</Nome>
+          <!--int-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>codigoDeAtivacao</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>cNumeroDeSessao</Nome>
+          <!--int-->
+          <Valor></Valor>
+        </Parametro>
+      </Parametros>
+    </Metodo>
+  </Componente>
+</Integrador>

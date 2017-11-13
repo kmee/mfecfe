@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Integrador>
+  <Identificador>
+    <Valor></Valor>
+  </Identificador>
+  <Componente Nome="VFP-e">
+    <Metodo Nome="RecuperarDadosLocaisEnviadosParaValidadorFiscal">
+      <Parametros />
+    </Metodo>
+  </Componente>
+</Integrador>

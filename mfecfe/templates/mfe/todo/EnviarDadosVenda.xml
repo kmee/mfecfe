@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Integrador>
+  <Identificador>
+    <Valor></Valor>
+  </Identificador>
+  <Componente Nome="MF-e">
+    <Metodo Nome="EnviarDadosVenda">
+      <Parametros>
+        <Parametro>
+          <Nome>numeroSessao</Nome>
+          <!--int-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>codigoDeAtivacao</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>dadosVenda</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>nrDocumento</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+      </Parametros>
+    </Metodo>
+  </Componente>
+</Integrador>

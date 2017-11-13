@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Integrador>
+  <Identificador>
+    <Valor></Valor>
+  </Identificador>
+  <Componente Nome="MF-e">
+    <Metodo Nome="AtivarSAT">
+      <Parametros>
+        <Parametro>
+          <Nome>numeroSessao</Nome>
+          <!--int-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>subComando</Nome>
+          <!--int-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>codigoDeAtivacao</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>cnpj</Nome>
+          <!--string-->
+          <Valor></Valor>
+        </Parametro>
+        <Parametro>
+          <Nome>cUF</Nome>
+          <!--int-->
+          <Valor></Valor>
+        </Parametro>
+      </Parametros>
+    </Metodo>
+  </Componente>
+</Integrador>
