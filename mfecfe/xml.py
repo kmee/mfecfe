@@ -31,10 +31,10 @@ def render_xml(path, template_name, remove_empty, **data):
     xml = template.render(**data)
     parser = etree.XMLParser(
         # ns_clean=True,
-        remove_blank_text=True,
-        remove_comments=True,
+        # remove_blank_text=True,
+        # remove_comments=True,
         # compact=True,
-        strip_cdata=False
+        # strip_cdata=False
     )
     tree = etree.fromstring(
         xml,

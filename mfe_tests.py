@@ -8,5 +8,7 @@ cliente = ClienteSATLocal(
 
 identificador = '99999'
 resposta = cliente.consultar_sat(identificador)
+print resposta
 
+resposta = cliente.consultar_numero_sessao(identificador, '99999')
 print resposta

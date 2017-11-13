@@ -118,15 +118,15 @@ class ClienteSATLocal(FuncoesSAT):
         return RespostaConsultarStatusOperacional.analisar(retorno)
 
 
-    def consultar_numero_sessao(self, numero_sessao):
+    def consultar_numero_sessao(self, identificador, numero_sessao):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.consultar_numero_sessao`.
 
         :return: Uma resposta SAT que irá depender da sessão consultada.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         retorno = super(ClienteSATLocal, self).\
-                consultar_numero_sessao(numero_sessao)
-        return RespostaConsultarNumeroSessao.analisar(retorno)
+                consultar_numero_sessao(identificador, numero_sessao)
+        # return RespostaConsultarNumeroSessao.analisar(retorno)
 
 
     def configurar_interface_de_rede(self, configuracao):

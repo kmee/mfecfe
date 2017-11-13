@@ -335,7 +335,7 @@ class FuncoesSAT(object):
             }
         xml = render_xml(self._path, 'ConsultarMFe.xml', True, consulta=consulta)
         # Colocar xml na pasta de input
-        # etree.write(self._path + 'test.xml', xml_declaration=True, encoding='UTF-8')
+        # xml.write(self._path + str(self.gerar_numero_sessao()) + 'test.xml', xml_declaration=True, encoding='UTF-8')
         print xml
         # Ler o retorno
         # retornar o retorno
@@ -371,7 +371,7 @@ class FuncoesSAT(object):
                 self.gerar_numero_sessao(), self._codigo_ativacao)
 
 
-    def consultar_numero_sessao(self, numero_sessao):
+    def consultar_numero_sessao(self, identificador, numero_sessao):
         """Função ``ConsultarNumeroSessao`` conforme ER SAT, item 6.1.8.
         Consulta o equipamento SAT por um número de sessão específico.
 
@@ -380,8 +380,18 @@ class FuncoesSAT(object):
         :return: Retorna *verbatim* a resposta da função SAT.
         :rtype: string
         """
-        return self.invocar__ConsultarNumeroSessao(self.gerar_numero_sessao(),
-                self._codigo_ativacao, numero_sessao)
+        consulta = {
+            'numero_identificador': identificador,
+            'numero_sessao': self.gerar_numero_sessao(),
+            'codigo_ativacao': self._codigo_ativacao,
+            'numero_sessao': numero_sessao,
+            }
+        xml = render_xml(self._path, 'ConsultarNumeroSessao.xml', True, consulta=consulta)
+        print xml
+
+
+        # return self.invocar__ConsultarNumeroSessao(self.gerar_numero_sessao(),
+        #         self._codigo_ativacao, numero_sessao)
 
 
     def configurar_interface_de_rede(self, configuracao):
