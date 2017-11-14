@@ -634,17 +634,24 @@ class FuncoesVFPE(object):
         }
         return self.comando_vfpe('VerificarStatusValidador.xml', consulta=consulta)
 
-    def enviar_pagamento(self, id, chave_requisicao, estabecimento, serial_pos,
-                         cpnj, icms_base, vr_total_venda, id_fila_validador,
-                         tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
-                         cod_moeda, endereco_ip, origem_pagemento,
-                         cupom_nfce):
-        """Função ``VerificarStatusValidador`` conforme ER SAT, item 6.1.14. Desbloqueio
+    def enviar_pagamentos_armazenamento_local(self):
+        """Função ``VerificarStatusValidador`` conforme ER SAT,
+        item 6.1.14. Desbloqueio
         operacional do equipamento SAT.
 
         :return: Retorna *verbatim* a resposta da função SAT.
         :rtype: string
         """
+        consulta = {
+        }
+        return self.comando_vfpe('EnviarPagamentosEmArmazenamentoLocal.xml',
+                                 consulta=consulta)
+
+    def enviar_pagamento(self, id, chave_requisicao, estabecimento, serial_pos,
+                         cpnj, icms_base, vr_total_venda, id_fila_validador,
+                         tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
+                         cod_moeda, endereco_ip, origem_pagemento,
+                         cupom_nfce):
         consulta = {
             'chave_acesso_validador': self._chave_acesso_validador,
             'id': id,
@@ -664,6 +671,7 @@ class FuncoesVFPE(object):
             'cupom_nfce': cupom_nfce,
         }
         return self.comando_vfpe('EnviarPagamento.xml', consulta=consulta)
+
 
     def enviar_status_pagamento(self, codigo_autorizacao, bin, dono_cartao,
                                 data_expiracao, instituicao_financeira, parcelas,
@@ -692,3 +700,22 @@ class FuncoesVFPE(object):
             'chave_acesso_validador': self._chave_acesso_validador,
         }
         return self.comando_vfpe('RecuperarDadosLocaisEnviadosParaValidadorFiscal.xml', consulta=consulta)
+
+    def resposta_fiscal(self, id_fila, chave_acesso, nsu, numero_aprovacao,
+                        bandeira, adquirente, cnpj, impressao_fiscal,
+                        numero_documento):
+
+        consulta = {
+            'chave_acesso_validador': self._chave_acesso_validador,
+            'id_fila': id_fila,
+            'chave_acesso': chave_acesso,
+            'nsu': nsu,
+            'numero_aprovacao': numero_aprovacao,
+            'bandeira': bandeira,
+            'adquirente': adquirente,
+            'cnpj': cnpj,
+            'impressao_fiscal': impressao_fiscal,
+            'numero_documento': numero_documento,
+        }
+        return self.comando_vfpe("RespostaFiscal.xml", consulta=consulta)
+

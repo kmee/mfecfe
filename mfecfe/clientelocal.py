@@ -234,7 +234,6 @@ class ClienteVfpeLocal(FuncoesVFPE):
                          cod_moeda, endereco_ip, origem_pagemento,
                          cupom_nfce)
 
-
     def enviar_status_pagamento(self, codigo_autorizacao, bin, dono_cartao,
                                 data_expiracao, instituicao_financeira, parcelas,
                                 codigo_pagamento, valor_pagamento, id_fila,
@@ -251,3 +250,16 @@ class ClienteVfpeLocal(FuncoesVFPE):
 
         retorno = super(ClienteVfpeLocal, self).\
             recuperar_dados_locais_enviados()
+
+    def enviar_pagamentos_armazenamento_local(self):
+        retorno = super(ClienteVfpeLocal, self).\
+            enviar_pagamentos_armazenamento_local()
+
+    def resposta_fiscal(self, id_fila, chave_acesso, nsu, numero_aprovacao,
+                        bandeira, adquirente, cnpj, impressao_fiscal,
+                        numero_documento):
+        retorno = super(ClienteVfpeLocal, self). \
+            resposta_fiscal(id_fila, chave_acesso, nsu, numero_aprovacao,
+                            bandeira, adquirente, cnpj, impressao_fiscal,
+                            numero_documento)
+
