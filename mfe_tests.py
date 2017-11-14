@@ -25,7 +25,7 @@ cliente = ClienteSATLocal(
 XML_CFE_VENDA = """<?xml version="1.0"?>
 <CFe>
   <infCFe versaoDadosEnt="0.06">
-    <ide>
+  <ide>
       <CNPJ>16716114000172</CNPJ>
       <signAC>SGR-SAT SISTEMA DE GESTAO E RETAGUARDA DO SAT</signAC>
       <numeroCaixa>002</numeroCaixa>
@@ -83,35 +83,35 @@ Fonte: IBPT (9oi3aC)
 </infCpl>
     </infAdic>
   </infCFe>
-</CFe>
-"""
+#</CFe>
+#"""
 
-resposta = cliente.enviar_dados_venda(XML_CFE_VENDA)
+#resposta = cliente.enviar_dados_venda(XML_CFE_VENDA)
 
 
-XML_CFE_CANCELAMENTO = """<?xml version="1.0" encoding="UTF-8"?>
-<CFeCanc>
-  <infCFe chCanc="CFe35150908723218000186599000040190000360539948">
-    <ide>
-      <CNPJ>16716114000172</CNPJ>
-      <signAC>SGR-SAT SISTEMA DE GESTAO E RETAGUARDA DO SAT</signAC>
-      <numeroCaixa>002</numeroCaixa>
-    </ide>
-    <emit/>
-    <dest/>
-    <total/>
-    <infAdic/>
-  </infCFe>
-</CFeCanc>
-"""
+#XML_CFE_CANCELAMENTO = """<?xml version="1.0" encoding="UTF-8"?>
+#<CFeCanc>
+#  <infCFe chCanc="CFe35150908723218000186599000040190000360539948">
+#    <ide>
+#      <CNPJ>16716114000172</CNPJ>
+#      <signAC>SGR-SAT SISTEMA DE GESTAO E RETAGUARDA DO SAT</signAC>
+#      <numeroCaixa>002</numeroCaixa>
+#    </ide>
+#    <emit/>
+#    <dest/>
+#    <total/>
+#    <infAdic/>
+#  </infCFe>
+#</CFeCanc>
+#"""
 
 resposta = cliente.cancelar_ultima_venda(
    'CFe35150908723218000186599000040190000360539948',
-   XML_CFE_CANCELAMENTO
+XML_CFE_CANCELAMENTO
 )
 
-# resposta = cliente.associar_assinatura('99999', '99999')
-# print (resposta)
+resposta = cliente.associar_assinatura('99999', '99999')
+print (resposta)
 #
 # resposta = cliente.ativar_sat('satcomum.constantes.CERTIFICADO_ACSAT_SEFAZ', '11111111111111', '35')
 # print (resposta)
@@ -153,3 +153,9 @@ resposta = cliente2.enviar_pagamento('1','1','1','1','1','1','1','1','1','1',
 print resposta
 
 
+resposta = cliente2.enviar_status_pagamento('1','1','1','11/11/11','1','1',
+                                            '1','1','1','1','1111')
+print resposta
+
+resposta = cliente2.recuperar_dados_locais_enviados()
+print resposta

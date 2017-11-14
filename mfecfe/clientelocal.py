@@ -233,3 +233,21 @@ class ClienteVfpeLocal(FuncoesVFPE):
                          tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
                          cod_moeda, endereco_ip, origem_pagemento,
                          cupom_nfce)
+
+
+    def enviar_status_pagamento(self, codigo_autorizacao, bin, dono_cartao,
+                                data_expiracao, instituicao_financeira, parcelas,
+                                codigo_pagamento, valor_pagamento, id_fila,
+                                tipo, ultimos_quatro_digitos):
+
+        retorno = super(ClienteVfpeLocal, self). \
+            enviar_status_pagamento(codigo_autorizacao,
+                                    bin, dono_cartao, data_expiracao,
+                                    instituicao_financeira, parcelas,
+                                    codigo_pagamento, valor_pagamento,
+                                    id_fila, tipo, ultimos_quatro_digitos)
+
+    def recuperar_dados_locais_enviados(self):
+
+        retorno = super(ClienteVfpeLocal, self).\
+            recuperar_dados_locais_enviados()

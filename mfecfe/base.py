@@ -664,3 +664,31 @@ class FuncoesVFPE(object):
             'cupom_nfce': cupom_nfce,
         }
         return self.comando_vfpe('EnviarPagamento.xml', consulta=consulta)
+
+    def enviar_status_pagamento(self, codigo_autorizacao, bin, dono_cartao,
+                                data_expiracao, instituicao_financeira, parcelas,
+                                codigo_pagamento, valor_pagamento, id_fila,
+                                tipo, ultimos_quatro_digitos):
+
+        consulta = {
+            'chave_acesso_validador': self._chave_acesso_validador,
+            'codigo_autorizacao': codigo_autorizacao,
+            'bin': bin,
+            'dono_cartao':dono_cartao,
+            'data_expiracao':data_expiracao,
+            'instituicao_financeira':instituicao_financeira,
+            'parcelas':parcelas,
+            'codigo_pagamento':codigo_autorizacao,
+            'valor_pagamento':valor_pagamento,
+            'id_fila':id_fila,
+            'tipo':tipo,
+            'ultimos_quatro_digitos':ultimos_quatro_digitos
+        }
+        return self.comando_vfpe('EnviarStatusPagamento.xml', consulta=consulta)
+
+    def recuperar_dados_locais_enviados(self):
+
+        consulta = {
+            'chave_acesso_validador': self._chave_acesso_validador,
+        }
+        return self.comando_vfpe('RecuperarDadosLocaisEnviadosParaValidadorFiscal.xml', consulta=consulta)

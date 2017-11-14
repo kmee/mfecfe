@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Integrador>
   <Identificador>
-    <Valor></Valor>
+    <Valor>{{ numero_identificador }}</Valor>
   </Identificador>
   <Componente Nome="VFP-e">
     <Metodo Nome="EnviarStatusPagamento">
@@ -10,7 +9,7 @@
           <Parametro>
             <Nome>chaveAcessoValidador</Nome>
             <!--String-->
-            <Valor></Valor>
+            <Valor>{{ consulta.chave_acesso_validador }}</Valor>
           </Parametro>
         </Parametros>
       </Construtor>
@@ -18,57 +17,57 @@
         <Parametro>
           <Nome>CodigoAutorizacao</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.codigo_autorizacao }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>Bin</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.bin }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>DonoCartao</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.dono_cartao }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>DataExpiracao</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.data_expiracao }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>InstituicaoFinanceira</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.instituicao_financeira }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>Parcelas</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.parcelas }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>CodigoPagamento</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.codigo_pagamento }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>ValorPagamento</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.valor_pagamento }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>IdFila</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.id_fila }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>Tipo</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.tipo }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>UltimosQuatroDigitos</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.ultimos_quatro_digitos }}</Valor>
         </Parametro>
       </Parametros>
     </Metodo>
