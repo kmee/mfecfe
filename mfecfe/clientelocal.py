@@ -20,6 +20,7 @@
 from satcomum import constantes
 
 from .base import FuncoesSAT
+from .base import FuncoesVFPE
 
 from .resposta import RespostaAtivarSAT
 from .resposta import RespostaCancelarUltimaVenda
@@ -206,3 +207,29 @@ class ClienteSATLocal(FuncoesSAT):
                 novo_codigo_ativacao, opcao=opcao,
                 codigo_emergencia=codigo_emergencia)
         return RespostaSAT.trocar_codigo_de_ativacao(retorno)
+
+class ClienteVfpeLocal(FuncoesVFPE):
+    def __init__(self, *args, **kwargs):
+        super(ClienteVfpeLocal, self).__init__(*args, **kwargs)
+
+    def verificar_status_validador(self, cpnj, id_fila):
+        """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.trocar_codigo_de_ativacao`.
+
+        :return: Uma resposta SAT padrão.
+        :rtype: satcfe.resposta.padrao.RespostaSAT
+        """
+        retorno = super(ClienteVfpeLocal, self).\
+            verificar_status_validador(cpnj, id_fila)
+
+    def enviar_pagamento(self, id, chave_requisicao, estabecimento, serial_pos,
+                         cpnj, icms_base, vr_total_venda, id_fila_validador,
+                         tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
+                         cod_moeda, endereco_ip, origem_pagemento,
+                         cupom_nfce):
+
+        retorno = super(ClienteVfpeLocal, self). \
+            enviar_pagamento(id, chave_requisicao, estabecimento, serial_pos,
+                         cpnj, icms_base, vr_total_venda, id_fila_validador,
+                         tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
+                         cod_moeda, endereco_ip, origem_pagemento,
+                         cupom_nfce)

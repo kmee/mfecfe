@@ -3,23 +3,24 @@ import satcfe
 
 from mfecfe import BibliotecaSAT
 from mfecfe import ClienteSATLocal
+from mfecfe import ClienteVfpeLocal
 
 cliente = ClienteSATLocal(
    BibliotecaSAT('/opt/Integrador'), # Caminho do Integrador
    codigo_ativacao='12345678'
 )
 
-resposta = cliente.consultar_sat()
-print (resposta)
-
-resposta = cliente.consultar_numero_sessao('99999')
-print (resposta)
-
-resposta = cliente.extrair_logs()
-print (resposta)
-
-resposta = cliente.consultar_status_operacional()
-print (resposta)
+# resposta = cliente.consultar_sat()
+# print (resposta)
+#
+# resposta = cliente.consultar_numero_sessao('99999')
+# print (resposta)
+#
+# resposta = cliente.extrair_logs()
+# print (resposta)
+#
+# resposta = cliente.consultar_status_operacional()
+# print (resposta)
 
 # resposta = cliente.associar_assinatura('99999', '99999')
 # print (resposta)
@@ -50,4 +51,17 @@ print (resposta)
 
 # resposta = cliente.comunicar_certificado_icpbrasil('')
 # print resposta
+
+cliente2 = ClienteVfpeLocal(
+   BibliotecaSAT('/opt/Integrador'), # Caminho do Integrador
+   chave_acesso_validador = '123456789'
+)
+
+resposta = cliente2.verificar_status_validador('1','1')
+print resposta
+
+resposta = cliente2.enviar_pagamento('1','1','1','1','1','1','1','1','1','1',
+                                     '1', '1','1','1','1')
+print resposta
+
 

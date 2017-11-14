@@ -574,3 +574,92 @@ class FuncoesSAT(object):
             'novo_codigo_ativacao': self.novo_codigo_ativacao,
         }
         return self.comando_sat('TrocarCodigoDeAtivacao.xml', consulta=consulta)
+
+
+
+class FuncoesVFPE(object):
+    def __init__(self, biblioteca, chave_acesso_validador=None):
+        self._biblioteca = biblioteca
+        self._chave_acesso_validador = chave_acesso_validador
+        self._path = os.path.join(os.path.dirname(__file__), 'templates/')
+
+
+    @property
+    def biblioteca(self):
+        return self._biblioteca
+
+    @property
+    def chave_acesso_validador(self):
+        return self._chave_acesso_validador
+
+
+    def __getattr__(self, name):
+        if name.startswith('invocar__'):
+            metodo_vfpe = name.replace('invocar__', '')
+            proto = FUNCTION_PROTOTYPES[metodo_vfpe]
+            fptr = getattr(self._biblioteca.ref, metodo_vfpe)
+            fptr.argtypes = proto.argtypes
+            fptr.restype = proto.restype
+            return fptr
+        raise AttributeError('{!r} object has no attribute {!r}'.format(
+                self.__class__.__name__, name))
+
+    def comando_vfpe(self, template, **kwargs):
+        kwargs['numero_identificador'] = 999999
+        xml = render_xml(self._path, template, True, **kwargs)
+
+        # xml = render_xml(self._path, 'ConsultarMFe.xml', True, consulta=consulta)
+        # print xml
+        # Colocar xml na pasta de input
+        from os.path import expanduser
+        home = expanduser("~")
+        xml.write(home + '/Integrador/input/' + str(self._chave_acesso_validador) + '.xml', xml_declaration=True, encoding='UTF-8')
+        # Ler o retorno
+        # retornar o retorno
+        # return self.invocar__ConsultarSAT(self.gerar_numero_sessao())
+        print xml
+
+    def verificar_status_validador(self, cpnj, id_fila):
+        """Função ``VerificarStatusValidador`` conforme ER SAT, item 6.1.14. Desbloqueio
+        operacional do equipamento SAT.
+
+        :return: Retorna *verbatim* a resposta da função SAT.
+        :rtype: string
+        """
+        consulta = {
+            'chave_acesso_validador': self._chave_acesso_validador,
+            'id_fila': id_fila,
+            'cnpj': cpnj,
+        }
+        return self.comando_vfpe('VerificarStatusValidador.xml', consulta=consulta)
+
+    def enviar_pagamento(self, id, chave_requisicao, estabecimento, serial_pos,
+                         cpnj, icms_base, vr_total_venda, id_fila_validador,
+                         tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
+                         cod_moeda, endereco_ip, origem_pagemento,
+                         cupom_nfce):
+        """Função ``VerificarStatusValidador`` conforme ER SAT, item 6.1.14. Desbloqueio
+        operacional do equipamento SAT.
+
+        :return: Retorna *verbatim* a resposta da função SAT.
+        :rtype: string
+        """
+        consulta = {
+            'chave_acesso_validador': self._chave_acesso_validador,
+            'id': id,
+            'chave_requisicao': chave_requisicao,
+            'estabecimento': estabecimento,
+            'serial_pos': serial_pos,
+            'cpnj': cpnj,
+            'icms_base': icms_base,
+            'vr_total_venda': vr_total_venda,
+            'id_fila_validador': id_fila_validador,
+            'tipo_maquina': tipo_maquina,
+            'h_multiplos_pagamentos': h_multiplos_pagamentos,
+            'h_anti_fraude': h_anti_fraude,
+            'cod_moeda': cod_moeda,
+            'endereco_ip': endereco_ip,
+            'origem_pagemento': origem_pagemento,
+            'cupom_nfce': cupom_nfce,
+        }
+        return self.comando_vfpe('EnviarPagamento.xml', consulta=consulta)

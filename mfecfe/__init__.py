@@ -25,4 +25,5 @@ logging.getLogger('satcfe').addHandler(logging.NullHandler())
 
 from .base import BibliotecaSAT
 from .clientelocal import ClienteSATLocal
+from .clientelocal import ClienteVfpeLocal
 from .clientesathub import ClienteSATHub
