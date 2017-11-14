@@ -240,7 +240,7 @@ class FuncoesSAT(object):
         # Colocar xml na pasta de input
         from os.path import expanduser
         home = expanduser("~")
-        xml.write(home + '/Integrador/input/' + str(self.gerar_numero_sessao()) + '.xml', xml_declaration=True, encoding='UTF-8')
+        xml.write(home + '/Integrador/input/' + str(self.gerar_numero_sessao()) + '-' + template.lower(), xml_declaration=True, encoding='UTF-8')
         # Ler o retorno
         # retornar o retorno
         # return self.invocar__ConsultarSAT(self.gerar_numero_sessao())
@@ -318,6 +318,7 @@ class FuncoesSAT(object):
             'numero_sessao': self.gerar_numero_sessao(),
             'codigo_ativacao': self._codigo_ativacao,
             'cfe_venda': cfe_venda,
+            'numero_documento': 10,  # FIXME
         }
         return self.comando_sat('EnviarDadosVenda.xml', consulta=consulta)
 

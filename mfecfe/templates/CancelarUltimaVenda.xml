@@ -23,7 +23,7 @@
         <Parametro>
           <Nome>dadosCancelamento</Nome>
           <!--string-->
-          <Valor>{{ consulta.cfe_canc }}</Valor>
+          <Valor><![CDATA[{{ consulta.cfe_canc }}]]></Valor>
         </Parametro>
       </Parametros>
     </Metodo>
