@@ -1,6 +1,6 @@
 <Integrador>
   <Identificador>
-    <Valor></Valor>
+    <Valor>{{ numero_identificador }}</Valor>
   </Identificador>
   <Componente Nome="VFP-e">
     <Metodo Nome="EnviarPagamento">
@@ -9,7 +9,7 @@
           <Parametro>
             <Nome>chaveAcessoValidador</Nome>
             <!--String-->
-            <Valor></Valor>
+            <Valor>{{ consulta.chave_acesso_validador }}</Valor>
           </Parametro>
         </Parametros>
       </Construtor>
@@ -17,77 +17,77 @@
         <Parametro>
           <Nome>Id</Nome>
           <!--int-->
-          <Valor></Valor>
+          <Valor>{{ consulta.id }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>ChaveRequisicao</Nome>
           <!--Guid-->
-          <Valor></Valor>
+          <Valor>{{ consulta.chave_requisicao }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>Estabelecimento</Nome>
           <!--int-->
-          <Valor></Valor>
+          <Valor>{{ consulta.estabecimento }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>SerialPos</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.serial_pos }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>Cnpj</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.cpnj }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>IcmsBase</Nome>
           <!--decimal-->
-          <Valor></Valor>
+          <Valor>{{ consulta.icms_base }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>ValorTotalVenda</Nome>
           <!--decimal-->
-          <Valor></Valor>
+          <Valor>{{ consulta.vr_total_venda }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>IdFilaValidador</Nome>
           <!--int-->
-          <Valor></Valor>
+          <Valor>{{ consulta.id_fila_validador }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>TipoMaquina</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.tipo_maquina }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>HabilitarMultiplosPagamentos</Nome>
           <!--bool-->
-          <Valor></Valor>
+          <Valor>{{ consulta.h_multiplos_pagamentos }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>HabilitarControleAntiFraude</Nome>
           <!--bool-->
-          <Valor></Valor>
+          <Valor>{{ consulta.h_anti_fraude }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>CodigoMoeda</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.cod_moeda }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>EnderecoIP</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.endereco_ip }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>OrigemPagamento</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.origem_pagemento }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>EmitirCupomNFCE</Nome>
           <!--bool-->
-          <Valor></Valor>
+          <Valor>{{ consulta.cupom_nfce }}</Valor>
         </Parametro>
       </Parametros>
     </Metodo>

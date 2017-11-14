@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Integrador>
   <Identificador>
-    <Valor></Valor>
+    <Valor>{{ numero_identificador }}</Valor>
   </Identificador>
   <Componente Nome="VFP-e">
     <Metodo Nome="RespostaFiscal">
@@ -10,7 +9,7 @@
           <Parametro>
             <Nome>chaveAcessoValidador</Nome>
             <!--String-->
-            <Valor></Valor>
+            <Valor>{{ consulta.chave_acesso_validador }}</Valor>
           </Parametro>
         </Parametros>
       </Construtor>
@@ -18,47 +17,47 @@
         <Parametro>
           <Nome>idFila</Nome>
           <!--int-->
-          <Valor></Valor>
+          <Valor>{{ consulta.id_fila }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>ChaveAcesso</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.chave_acesso }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>Nsu</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.nsu }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>NumerodeAprovacao</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.numero_aprovacao }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>Bandeira</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.bandeira }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>Adquirente</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.adquirente }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>Cnpj</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.cnpj }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>ImpressaoFiscal</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.impressao_fiscal }}</Valor>
         </Parametro>
         <Parametro>
           <Nome>NumeroDocumento</Nome>
           <!--string-->
-          <Valor></Valor>
+          <Valor>{{ consulta.numero_documento }}</Valor>
         </Parametro>
       </Parametros>
     </Metodo>
