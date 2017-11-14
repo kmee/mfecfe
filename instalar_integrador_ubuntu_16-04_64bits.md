@@ -1,48 +1,55 @@
-##################################################
-# Se vc executar em outra ordem não vai funcionar
-##################################################
+Instalando o Integrador do Ceará no Linux Ubuntu 16.04 64 bits
+==============================================================
 
+Importante: Se vc executar em outra ordem não vai funcionar
 
-# 1. ldd: Deve ser maior que > 2.12
-####################################
+1. ldd: Deve ser maior que > 2.12
 
+```
 ldd --version
+```
 
+2. Mono
 
-# 2. Mono
-#######################################
+```
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 echo "deb http://download.mono-project.com/repo/ubuntu xenial main" | sudo tee /etc/apt/sources.list.d/mono-official.list
 sudo apt update
 apt list --upgradable
 sudo apt-get update
 sudo apt-get install mono-complete uuid-runtime axel
+```
 
-# 3. Downloads
-###########################################
+3. Downloads
+
+```
 cd ~/Downloads
 axel https://integrador.blob.core.windows.net/integrador/instalador-ce-sefaz-driver-linux-x64-02.04.07.tar.gz
 axel https://integrador.blob.core.windows.net/linuxwithoutui/sqlite-netFx-full-source-1.0.105.2.zip
 axel https://integrador.blob.core.windows.net/linuxwithoutui/IntegradorLinuxServidor.zip
+```
 
+4. Driver
 
-# 4. Driver
-###########################################
+```
 tar -zxvf instalador-ce-sefaz-driver-linux-x64-02.04.07.tar.gz
 cd instalador-ce-sefaz-driver-linux-x64-02.04.07
 sudo su
 #Rodar como root!
 ./instala-driver-mfe.sh
 reboot
+```
 
-# 5. Extraindo o integrador
-###########################################
+5. Extraindo o integrador
+
+```
 cd ~/Downloads
 unzip IntegradorLinuxServidor.zip
 mv Debug ~/IntegradorServer
+```
 
-# 6. Compilando o libSQLite.Interop.so
-###########################################
+6. Compilando o libSQLite.Interop.so
+```
 unzip sqlite-netFx-full-source-1.0.105.2.zip -d sqlite-netFx-full-source-1.0.105.2
 cd sqlite-netFx-full-source-1.0.105.2/Setup
 chmod +x compile-interop-assembly-release.sh
@@ -50,20 +57,24 @@ chmod +x compile-interop-assembly-release.sh
 cd ~/Downloads/sqlite-netFx-full-source-1.0.105.2/bin/2013/Release/bin
 chmod -x libSQLite.Interop.so
 cp libSQLite.Interop.so ~/IntegradorServer
+```
 
-# 7. Criando os diretórios de input e output:
-# Atenção não coloque nada neles antes de iniciar o Integrador server
-# pela primeira vez, senão vai dar problema
-##################################################
+7. Criando os diretórios de input e output:
+- Atenção não coloque nada neles antes de iniciar o Integrador server pela primeira vez, senão vai dar problema
+
+```
 mkdir -p ~/Integrador/input
 mkdir -p ~/Integrador/output
+```
 
-# 8. Crie o arquivo se configuração
-#####################################
+8. Crie o arquivo se configuração
+```
 nano ~/IntegradorServer/integrador.ooo
+```
 
 Exemplo arquivo Tanca, cuidado pois isto é um json!!! não tem vilgula na ultima linha.
 
+```
 {
    "ie":"06.591148-2",
    "cnpj":"30.146.465/0001-16",
@@ -77,22 +88,32 @@ Exemplo arquivo Tanca, cuidado pois isto é um json!!! não tem vilgula na ultim
    "inputFolderTerminal":"/home/kmee/Integrador/input/",
    "outputFolderTerminal":"/home/kmee/Integrador/output/"
 }
+```
 
-# 9. Execute o servidor pela primeira vez!
-# Este procedimento pode demorar um pouco dependendo da sua internet, pois é realizado o download de alguns arquivos
-# Não precisa de root
-##########################################
+9. Execute o servidor pela primeira vez!
+
+Você não precisa executar o servidor como root, desde que o mesmo tenha acesso a todos os arquivos.
+
+```
 cd ~/IntegradorServer
 mono IntegradorLinux.exe
+```
 
-# 10. Coloque seu primeiro arquivo na pasta input
-# Não edite aquivos lá dentro, apenas salve arquivos finalizados.
-#################################################################
+Na primeira vez são realizados alguns downloads então este procedimento pode demorar um pouco dependendo da sua internet.
 
+Espere alguns minutos antes de continuar.
+
+10. Coloque seu primeiro arquivo na pasta input
+
+Não edite aquivos lá dentro, apenas salve arquivos finalizados.
+
+```
 nano /tmp/consultaMfe.xml
+```
 
 Cole o conteudo
 
+```
 <?xml version="1.0" encoding="utf-8"?>
 <Integrador>
     <Identificador>
@@ -109,5 +130,8 @@ Cole o conteudo
         </Metodo>
     </Componente>
 </Integrador>
-
+```
+Copie o arquivo
+```
 cp /tmp/consultaMfe.xml ~/Integrador/input
+```
