@@ -92,16 +92,51 @@ Exemplo arquivo Tanca, cuidado pois isto é um json!!! não tem vilgula na ultim
 
 9. Execute o servidor pela primeira vez!
 
-Você não precisa executar o servidor como root, desde que o mesmo tenha acesso a todos os arquivos.
+Você não precisa executar o servidor como root, desde que o mesmo tenha acesso a todos os arquivos. Na primeira vez são realizados alguns downloads então este procedimento pode demorar um pouco dependendo da sua internet.
+
+Espere alguns minutos antes de continuar. No momento na minha instalação listo os seguintes arquivos:
+
+```
+mileo@mileo-XPS-L421X:/opt/integrador/server$ ls -1 && ls | wc -l
+ComponenteConsultaNSessao.cp
+dataupdate
+easync.dll
+GizminNetworks.dll
+IntegracaoComIntegradorSefaz.zip
+Integrador.cnf
+integradorcore.dll
+integradorcoreterminal.dll
+integradorData.itr
+IntegradorLinux.exe
+IntegradorLinux.vshost.exe
+integradorMFE.dll
+integradorMFE.jar
+integrador.ooo
+libSQLite.Interop.so
+LOG
+Newtonsoft.Json.dll
+Newtonsoft.Json.xml
+RestSharp.dll
+RestSharp.xml
+ServiceStack.Text.dll
+ServiceStack.Text.xml
+SQLite.Interop.dll
+SQLite.Interop.so
+System.Data.SQLite.dll
+System.Data.SQLite.xml
+System.Management.dll
+System.Management.Instrumentation.dll
+ValidadorFiscal.Integracao.dll
+```
+
+Total de arquivos 29.
+
+Executando o integrador pela primeira vez
 
 ```
 cd ~/IntegradorServer
 mono IntegradorLinux.exe
 ```
-
-Na primeira vez são realizados alguns downloads então este procedimento pode demorar um pouco dependendo da sua internet.
-
-Espere alguns minutos antes de continuar.
 
 10. Coloque seu primeiro arquivo na pasta input
 
