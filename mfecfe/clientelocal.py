@@ -43,7 +43,6 @@ class ClienteSATLocal(FuncoesSAT):
     def __init__(self, *args, **kwargs):
         super(ClienteSATLocal, self).__init__(*args, **kwargs)
 
-
     def ativar_sat(self, tipo_certificado, cnpj, codigo_uf):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.ativar_sat`.
 
@@ -52,10 +51,8 @@ class ClienteSATLocal(FuncoesSAT):
         """
 
         retorno = super(ClienteSATLocal, self).ativar_sat(
-                tipo_certificado, cnpj, codigo_uf)
-        pass
-        # return RespostaAtivarSAT.analisar(retorno)
-
+            tipo_certificado, cnpj, codigo_uf)
+        return RespostaAtivarSAT.analisar(retorno)
 
     def comunicar_certificado_icpbrasil(self, certificado):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.comunicar_certificado_icpbrasil`.
@@ -63,10 +60,9 @@ class ClienteSATLocal(FuncoesSAT):
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
-        retorno = super(ClienteSATLocal, self).\
-                comunicar_certificado_icpbrasil(certificado)
+        retorno = super(ClienteSATLocal, self). \
+            comunicar_certificado_icpbrasil(certificado)
         return RespostaSAT.comunicar_certificado_icpbrasil(retorno)
-
 
     def enviar_dados_venda(self, dados_venda):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.enviar_dados_venda`.
@@ -75,8 +71,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.enviardadosvenda.RespostaEnviarDadosVenda
         """
         retorno = super(ClienteSATLocal, self).enviar_dados_venda(dados_venda)
-        # return RespostaEnviarDadosVenda.analisar(retorno)
-
+        return RespostaEnviarDadosVenda.analisar(retorno)
 
     def cancelar_ultima_venda(self, chave_cfe, dados_cancelamento):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.cancelar_ultima_venda`.
@@ -84,10 +79,9 @@ class ClienteSATLocal(FuncoesSAT):
         :return: Uma resposta SAT especializada em ``CancelarUltimaVenda``.
         :rtype: satcfe.resposta.cancelarultimavenda.RespostaCancelarUltimaVenda
         """
-        retorno = super(ClienteSATLocal, self).\
-                cancelar_ultima_venda(chave_cfe, dados_cancelamento)
-        # return RespostaCancelarUltimaVenda.analisar(retorno)
-
+        retorno = super(ClienteSATLocal, self). \
+            cancelar_ultima_venda(chave_cfe, dados_cancelamento)
+        return RespostaCancelarUltimaVenda.analisar(retorno)
 
     def consultar_sat(self):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.consultar_sat`.
@@ -96,10 +90,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         retorno = super(ClienteSATLocal, self).consultar_sat()
-        print "Retorno"
-        return False
-        # return RespostaSAT.consultar_sat(retorno)
-
+        return RespostaSAT.consultar_sat(retorno)
 
     def teste_fim_a_fim(self, dados_venda):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.teste_fim_a_fim`.
@@ -110,7 +101,6 @@ class ClienteSATLocal(FuncoesSAT):
         retorno = super(ClienteSATLocal, self).teste_fim_a_fim(dados_venda)
         return RespostaTesteFimAFim.analisar(retorno)
 
-
     def consultar_status_operacional(self):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.consultar_status_operacional`.
 
@@ -118,8 +108,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.consultarstatusoperacional.RespostaConsultarStatusOperacional
         """
         retorno = super(ClienteSATLocal, self).consultar_status_operacional()
-        # return RespostaConsultarStatusOperacional.analisar(retorno)
-
+        return RespostaConsultarStatusOperacional.analisar(retorno)
 
     def consultar_numero_sessao(self, numero_sessao):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.consultar_numero_sessao`.
@@ -127,10 +116,9 @@ class ClienteSATLocal(FuncoesSAT):
         :return: Uma resposta SAT que irá depender da sessão consultada.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
-        retorno = super(ClienteSATLocal, self).\
-                consultar_numero_sessao(numero_sessao)
-        # return RespostaConsultarNumeroSessao.analisar(retorno)
-
+        retorno = super(ClienteSATLocal, self). \
+            consultar_numero_sessao(numero_sessao)
+        return RespostaConsultarNumeroSessao.analisar(retorno)
 
     def configurar_interface_de_rede(self, configuracao):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.configurar_interface_de_rede`.
@@ -138,10 +126,9 @@ class ClienteSATLocal(FuncoesSAT):
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
-        retorno = super(ClienteSATLocal, self).\
-                configurar_interface_de_rede(configuracao)
-        # return RespostaSAT.configurar_interface_de_rede(retorno)
-
+        retorno = super(ClienteSATLocal, self). \
+            configurar_interface_de_rede(configuracao)
+        return RespostaSAT.configurar_interface_de_rede(retorno)
 
     def associar_assinatura(self, sequencia_cnpj, assinatura_ac):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.associar_assinatura`.
@@ -149,11 +136,10 @@ class ClienteSATLocal(FuncoesSAT):
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
-        retorno = super(ClienteSATLocal, self).\
-                associar_assinatura(sequencia_cnpj, assinatura_ac)
+        retorno = super(ClienteSATLocal, self). \
+            associar_assinatura(sequencia_cnpj, assinatura_ac)
         # (!) resposta baseada na redação com efeitos até 31-12-2016
-        # return RespostaSAT.associar_assinatura(retorno)
-
+        return RespostaSAT.associar_assinatura(retorno)
 
     def atualizar_software_sat(self):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.atualizar_software_sat`.
@@ -162,8 +148,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         retorno = super(ClienteSATLocal, self).atualizar_software_sat()
-        #return RespostaSAT.atualizar_software_sat(retorno)
-
+        return RespostaSAT.atualizar_software_sat(retorno)
 
     def extrair_logs(self):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.extrair_logs`.
@@ -172,8 +157,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.extrairlogs.RespostaExtrairLogs
         """
         retorno = super(ClienteSATLocal, self).extrair_logs()
-        # return RespostaExtrairLogs.analisar(retorno)
-
+        return RespostaExtrairLogs.analisar(retorno)
 
     def bloquear_sat(self):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.bloquear_sat`.
@@ -182,8 +166,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         retorno = super(ClienteSATLocal, self).bloquear_sat()
-        #return RespostaSAT.bloquear_sat(retorno)
-
+        return RespostaSAT.bloquear_sat(retorno)
 
     def desbloquear_sat(self):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.desbloquear_sat`.
@@ -192,21 +175,21 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         retorno = super(ClienteSATLocal, self).desbloquear_sat()
-        # return RespostaSAT.desbloquear_sat(retorno)
-
+        return RespostaSAT.desbloquear_sat(retorno)
 
     def trocar_codigo_de_ativacao(self, novo_codigo_ativacao,
-            opcao=constantes.CODIGO_ATIVACAO_REGULAR,
-            codigo_emergencia=None):
+                                  opcao=constantes.CODIGO_ATIVACAO_REGULAR,
+                                  codigo_emergencia=None):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.trocar_codigo_de_ativacao`.
 
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         retorno = super(ClienteSATLocal, self).trocar_codigo_de_ativacao(
-                novo_codigo_ativacao, opcao=opcao,
-                codigo_emergencia=codigo_emergencia)
+            novo_codigo_ativacao, opcao=opcao,
+            codigo_emergencia=codigo_emergencia)
         return RespostaSAT.trocar_codigo_de_ativacao(retorno)
+
 
 class ClienteVfpeLocal(FuncoesVFPE):
     def __init__(self, *args, **kwargs):
@@ -218,7 +201,7 @@ class ClienteVfpeLocal(FuncoesVFPE):
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
-        retorno = super(ClienteVfpeLocal, self).\
+        retorno = super(ClienteVfpeLocal, self). \
             verificar_status_validador(cpnj, id_fila)
 
     def enviar_pagamento(self, id, chave_requisicao, estabecimento, serial_pos,
@@ -226,19 +209,17 @@ class ClienteVfpeLocal(FuncoesVFPE):
                          tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
                          cod_moeda, endereco_ip, origem_pagemento,
                          cupom_nfce):
-
         retorno = super(ClienteVfpeLocal, self). \
             enviar_pagamento(id, chave_requisicao, estabecimento, serial_pos,
-                         cpnj, icms_base, vr_total_venda, id_fila_validador,
-                         tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
-                         cod_moeda, endereco_ip, origem_pagemento,
-                         cupom_nfce)
+                             cpnj, icms_base, vr_total_venda, id_fila_validador,
+                             tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
+                             cod_moeda, endereco_ip, origem_pagemento,
+                             cupom_nfce)
 
     def enviar_status_pagamento(self, codigo_autorizacao, bin, dono_cartao,
                                 data_expiracao, instituicao_financeira, parcelas,
                                 codigo_pagamento, valor_pagamento, id_fila,
                                 tipo, ultimos_quatro_digitos):
-
         retorno = super(ClienteVfpeLocal, self). \
             enviar_status_pagamento(codigo_autorizacao,
                                     bin, dono_cartao, data_expiracao,
@@ -247,12 +228,11 @@ class ClienteVfpeLocal(FuncoesVFPE):
                                     id_fila, tipo, ultimos_quatro_digitos)
 
     def recuperar_dados_locais_enviados(self):
-
-        retorno = super(ClienteVfpeLocal, self).\
+        retorno = super(ClienteVfpeLocal, self). \
             recuperar_dados_locais_enviados()
 
     def enviar_pagamentos_armazenamento_local(self):
-        retorno = super(ClienteVfpeLocal, self).\
+        retorno = super(ClienteVfpeLocal, self). \
             enviar_pagamentos_armazenamento_local()
 
     def resposta_fiscal(self, id_fila, chave_acesso, nsu, numero_aprovacao,
@@ -262,4 +242,3 @@ class ClienteVfpeLocal(FuncoesVFPE):
             resposta_fiscal(id_fila, chave_acesso, nsu, numero_aprovacao,
                             bandeira, adquirente, cnpj, impressao_fiscal,
                             numero_documento)
-

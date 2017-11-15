@@ -21,12 +21,57 @@ import collections
 import ctypes
 import os
 import random
+import time
+import xmltodict
 
 from ctypes import c_int
 from ctypes import c_char_p
 
 from satcomum import constantes
-from xml import render_xml
+from xml import render_xml, sanitize_response
+from watchdog.observers import Observer
+from watchdog.events import PatternMatchingEventHandler
+
+
+class MonitorIntegrador(PatternMatchingEventHandler):
+    patterns = ["*.xml"]
+
+    def __init__(self, observer):
+        super(MonitorIntegrador, self).__init__()
+        self.observer = observer
+
+    def process(self, event):
+        """ Realiza o processamento dos arquivos criados e modificados dentro da pasta de output do integrador
+
+        E ao ler o arquivo notifica o observador do numero identificador do arquivo e seu caminho.
+
+        :param event:
+                event_type = None
+
+                    The type of the event as a string.
+
+                is_directory = False
+
+                    True if event was emitted for a directory; False otherwise.
+
+                src_path[source]
+
+                    Source path of the file system object that triggered this event.
+
+        :return:
+        """
+        with open(event.src_path, 'r') as xml_source:
+            xml_string = xml_source.read()
+            parsed = xmltodict.parse(xml_string)
+            self.observer.src_path = event.src_path
+            self.observer.resposta = parsed.get('Integrador', {}).get('Resposta', {}).get('retorno')
+            self.observer.numero_identificador = parsed.get('Integrador', {}).get('Identificador', {}).get('Valor')
+
+    def on_modified(self, event):
+        self.process(event)
+
+    def on_created(self, event):
+        self.process(event)
 
 
 class _Prototype(object):
@@ -219,7 +264,6 @@ class FuncoesSAT(object):
         """Gera o número de sessão para a próxima invocação de função SAT."""
         return self._numerador_sessao()
 
-
     def __getattr__(self, name):
         if name.startswith('invocar__'):
             metodo_sat = name.replace('invocar__', '')
@@ -232,19 +276,36 @@ class FuncoesSAT(object):
                 self.__class__.__name__, name))
 
     def comando_sat(self, template, **kwargs):
-        kwargs['numero_identificador'] = 999999
-        xml = render_xml(self._path, template, True, **kwargs)
 
-        # xml = render_xml(self._path, 'ConsultarMFe.xml', True, consulta=consulta)
-        # print xml
-        # Colocar xml na pasta de input
-        from os.path import expanduser
-        home = expanduser("~")
-        xml.write(home + '/Integrador/input/' + str(self.gerar_numero_sessao()) + '-' + template.lower(), xml_declaration=True, encoding='UTF-8')
-        # Ler o retorno
-        # retornar o retorno
-        # return self.invocar__ConsultarSAT(self.gerar_numero_sessao())
-        print xml
+        numero_identificador = kwargs.get(
+            'numero_sessao',
+            self.gerar_numero_sessao()
+        )
+
+        kwargs['numero_identificador'] = numero_identificador
+
+        xml = render_xml(self._path, template, True, **kwargs)
+        xml.write(
+            '/opt/integrador/input/' + str(numero_identificador) + '-' + template.lower(),
+            xml_declaration=True,
+            encoding='UTF-8'
+        )
+
+        observer = Observer()
+        observer.numero_identificador = False
+        observer.src_path = False
+        observer.schedule(MonitorIntegrador(observer), path='/opt/integrador/output')
+        observer.start()
+
+        while True:
+            # Analisa a pasta a cada um segundo.
+            time.sleep(1)
+            if str(numero_identificador) == observer.numero_identificador and observer.src_path:
+                # Ao encontrar um arquivo de retorno com o mesmo numero identificador da remessa sai do loop.
+                break
+        observer.stop()
+        observer.join()
+        return observer.resposta
 
 
     def ativar_sat(self, tipo_certificado, cnpj, codigo_uf):
