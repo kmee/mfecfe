@@ -44,7 +44,7 @@ def read_install_requires():
 
 def read_version():
     content = read(os.path.join(
-            os.path.dirname(__file__), 'satcfe', '__init__.py'))
+            os.path.dirname(__file__), 'mfecfe', '__init__.py'))
     return re.search(r"__version__ = '([^']+)'", content).group(1)
 
 
@@ -75,9 +75,12 @@ setup(
         description=u'Abstração do acesso ao equipamento SAT (SAT-CF-e)',
         long_description=long_description,
         packages=[
-                'satcfe',
-                'satcfe.resposta',
+                'mfecfe',
+                'mfecfe.resposta',
             ],
+        package_data={
+            'mfecfe': ['templates/*'],
+        },
         install_requires=read_install_requires(),
         extras_require={
                 'testing': [
@@ -89,7 +92,7 @@ setup(
         cmdclass={
                 'test': PyTest
             },
-        test_suite='satcfe.tests',
+        test_suite='mfecfe.tests',
         include_package_data=True,
         license='Apache Software License',
         platforms='any',
