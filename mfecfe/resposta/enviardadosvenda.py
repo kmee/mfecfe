@@ -119,3 +119,46 @@ class RespostaEnviarDadosVenda(RespostaSAT):
         if resposta.EEEEE not in ('06000',):
             raise ExcecaoRespostaSAT(resposta)
         return resposta
+
+    @staticmethod
+    def analisarVFPE(retorno):
+        """Constrói uma :class:`RespostaEnviarDadosVenda` a partir do
+        retorno informado.
+
+        :param unicode retorno: Retorno da função ``VerificarStatusValidador``.
+        """
+        aux_retorno = ''
+        for key, val in retorno.items():
+            aux_retorno = aux_retorno + val + '|'
+
+        aux_retorno = aux_retorno[:len(aux_retorno) - 1]
+        resposta = analisar_retorno(forcar_unicode(aux_retorno),
+                                    funcao='verificarstatusvalidador',
+                                    classe_resposta=RespostaEnviarDadosVenda,
+                                    campos=(
+                                        ('CodigoAutorizacao', unicode),
+                                        ('Bin', unicode),
+                                        ('DonoCartao', unicode),
+                                        ('DataExpiracao', unicode),
+                                        ('InstituicaoFinanceira', unicode),
+                                        ('Parcelas', Decimal),
+                                        ('UltimosQuatroDigitos', unicode),
+                                        ('CodigoPagamento', unicode),
+                                        ('ValorPagamento', Decimal),
+                                        ('IdFila', unicode),
+                                        ('Tipo', unicode),
+                                    ),
+                                    campos_alternativos=[
+                                        # se a venda falhar apenas os primeiros seis campos
+                                        # especificados na ER deverão ser retornados...
+                                        (
+                                            ('CodigoAutorizacao', unicode),
+                                            ('ValorPagamento', unicode),
+                                            ('IdFila', unicode),
+                                        ),
+                                        # por via das dúvidas, considera o padrão de campos,
+                                        # caso não haja nenhuma coincidência...
+                                        RespostaSAT.CAMPOS,
+                                    ]
+                                    )
+        return resposta
