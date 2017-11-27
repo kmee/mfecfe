@@ -90,6 +90,27 @@ Exemplo arquivo Tanca, cuidado pois isto é um json!!! não tem vilgula na ultim
 }
 ```
 
+ O XML enviado para o aparelho de teste deve usar os mesmos dados do Integrador?
+
+Não, no caso cada marca possui dados específicos que deverão ser informados no XML de venda.
+
+TANCA:
+
+    Código de Ativação: 12345678
+    CNPJ do Contribuinte: 08.723.218/0001-86
+    IE do Contribuinte: 562.377.111.111
+    CNPJ da Software House: 16.716.114/0001-72
+    Assinatura da Software House: SGR-SAT SISTEMA DE GESTAO E RETAGUARDA DO SAT
+
+ELGIN:
+
+    Código de Ativação: 123456789
+    CNPJ do Contribuinte: 14.200.166/0001-66
+    IE do Contribuinte: 1234567890
+    CNPJ da Software House: 08.490.295/0001-33
+    Assinatura da Software House: MD2Nof/O0tQMPKiYeeAydSjYt7YV9kU0nWKZGXHVdYIzR2W9Z6tgXni/Y5bnjmUAk8MkqlBJIiOOIskKCjJ086k7vAP0EU5cBRYj/nzHUiRdu9AVD7WRfVs00BDyb5fsnnKg7gAXXH6SBgCxG9yjAkxJ0l2E2idsWBAJ5peQEBZqtHytRUC+FLaSfd3+66QNxIBlDwQIRzUGPaU6fvErVDSfMUf8WpkwnPz36fCQnyLypqe/5mbox9pt3RCbbXcYqnR/4poYGr9M9Kymj4/PyX9xGeiXwbgzOOHNIU5M/aAs0rulXz948bZla0eXABgEcp6mDkTzweLPZTbmOhX+eA==
+
+
 9. Execute o servidor pela primeira vez!
 
 Você não precisa executar o servidor como root, desde que o mesmo tenha acesso a todos os arquivos. Na primeira vez são realizados alguns downloads então este procedimento pode demorar um pouco dependendo da sua internet.
