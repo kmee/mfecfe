@@ -1,9 +1,10 @@
 __pycache__/
 .cache/
+.idea/
 /docs/
 /build/
 /dist/
-/satcfe.egg-info/
+/mfecfe.egg-info/
 /*.egg/
 /*.eggs/
 /docs/_build/
