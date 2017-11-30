@@ -121,7 +121,7 @@ class BibliotecaSAT(object):
 
     def __init__(self, caminho, convencao=None):
         self._libsat = None
-        self._caminho = caminho
+        self._caminho = self.limpa_formatacao_caminho_integrador(caminho)
         self._convencao = convencao
 
     @property
@@ -142,6 +142,14 @@ class BibliotecaSAT(object):
         disponíveis na contante :attr:`~satcomum.constantes.CONVENCOES_CHAMADA`.
         """
         return self._convencao
+
+    def limpa_formatacao_caminho_integrador(self, caminho):
+        if caminho[0] != '/':
+            caminho = '/' + caminho
+        if caminho[len(caminho)-1] != '/':
+            caminho = caminho + '/'
+
+        return caminho.replace('\\', '/')
 
 
 class NumeroSessaoMemoria(object):
@@ -288,7 +296,9 @@ class FuncoesSAT(object):
 
         xml = render_xml(self._path, template, True, **kwargs)
         xml.write(
-            '/opt/integrador/input/' + str(numero_identificador) + '-' + template.lower(),
+            str(
+              
+              .caminho)+'input/' + str(numero_identificador) + '-' + template.lower(),
             xml_declaration=True,
             encoding='UTF-8'
         )
@@ -296,7 +306,7 @@ class FuncoesSAT(object):
         observer = Observer()
         observer.numero_identificador = False
         observer.src_path = False
-        observer.schedule(MonitorIntegrador(observer), path='/opt/integrador/output')
+        observer.schedule(MonitorIntegrador(observer), path=str(self.biblioteca.caminho)+'output')
         observer.start()
 
         while True:
@@ -682,7 +692,7 @@ class FuncoesVFPE(object):
         kwargs['numero_identificador'] = numero_identificador
         xml = render_xml(self._path, template, True, **kwargs)
         xml.write(
-            '/opt/integrador/input/' + str(numero_identificador) + '-' + template.lower(),
+            str(self.biblioteca.caminho)+'input/' + str(numero_identificador) + '-' + template.lower(),
             xml_declaration=True,
             encoding='UTF-8'
         )
@@ -690,7 +700,7 @@ class FuncoesVFPE(object):
         observer = Observer()
         observer.numero_identificador = False
         observer.src_path = False
-        observer.schedule(MonitorIntegrador(observer), path='/opt/integrador/output')
+        observer.schedule(MonitorIntegrador(observer), path=str(self.biblioteca.caminho)+'output')
         observer.start()
 
         while True:
@@ -734,8 +744,7 @@ class FuncoesVFPE(object):
     def enviar_pagamento(self, chave_requisicao, estabecimento, serial_pos,
                          cpnj, icms_base, vr_total_venda, id_fila_validador,
                          h_multiplos_pagamentos, h_anti_fraude,
-                         cod_moeda, origem_pagemento,
-                         cupom_nfce):
+                         cod_moeda, origem_pagemento):
         consulta = {
             'chave_acesso_validador': self._chave_acesso_validador,
             'chave_requisicao': chave_requisicao,
@@ -748,8 +757,7 @@ class FuncoesVFPE(object):
             'h_multiplos_pagamentos': h_multiplos_pagamentos,
             'h_anti_fraude': h_anti_fraude,
             'cod_moeda': cod_moeda,
-            'origem_pagemento': origem_pagemento,
-            'cupom_nfce': cupom_nfce,
+            'origem_pagemento': origem_pagemento
         }
         return self.comando_vfpe('EnviarPagamento.xml', consulta=consulta)
 
@@ -799,4 +807,5 @@ class FuncoesVFPE(object):
             'numero_documento': numero_documento,
         }
         return self.comando_vfpe("RespostaFiscal.xml", consulta=consulta)
+
 
