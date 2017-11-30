@@ -17,8 +17,8 @@ print resposta.EEEEE
 print resposta.mensagem
 
 
-# resposta = cliente.consultar_numero_sessao('999999')
-# resposta = cliente.extrair_logs()
+resposta = cliente.consultar_numero_sessao('999999')
+resposta = cliente.extrair_logs()
 # resposta = cliente.consultar_status_operacional()
 #
 XML_CFE_VENDA = """<?xml version="1.0" ?>
@@ -94,50 +94,50 @@ print resposta.xml()
 from satcomum import constantes
 from satcfe.entidades import CFeCancelamento
 
-cfecanc = CFeCancelamento(
-        chCanc=resposta.chaveConsulta,
-        CNPJ='16716114000172',
-        signAC=constantes.ASSINATURA_AC_TESTE,
-        numeroCaixa=2)
-
-resposta = cliente.cancelar_ultima_venda(cfecanc.chCanc, cfecanc)
-
-print resposta.EEEEE
-print resposta.CCCC
-print resposta.arquivoCFeBase64
-print resposta.timeStamp
-print resposta.chaveConsulta
-print resposta.valorTotalCFe
-print resposta.assinaturaQRCODE
-print resposta.xml()
+# cfecanc = CFeCancelamento(
+#         chCanc=resposta.chaveConsulta,
+#         CNPJ='16716114000172',
+#         signAC=constantes.ASSINATURA_AC_TESTE,
+#         numeroCaixa=2)
+#
+# resposta = cliente.cancelar_ultima_venda(cfecanc.chCanc, cfecanc)
+#
+# print resposta.EEEEE
+# print resposta.CCCC
+# print resposta.arquivoCFeBase64
+# print resposta.timeStamp
+# print resposta.chaveConsulta
+# print resposta.valorTotalCFe
+# print resposta.assinaturaQRCODE
+# print resposta.xml()
 
 
 # # TESTES INATIVOS
 # # resposta = cliente.associar_assinatura('99999', '99999')
-# # resposta = cliente.ativar_sat('satcomum.constantes.CERTIFICADO_ACSAT_SEFAZ', '11111111111111', '35')
-# # resposta = cliente.atualizar_software_sat()
-# # resposta = cliente.bloquear_sat()
-# # resposta = cliente.teste_fim_a_fim(u'CFeVenda')
-# # resposta = cliente.desbloquear_sat()
-# # resposta = cliente.configurar_interface_de_rede('tipoInter:')
-# # resposta = cliente.comunicar_certificado_icpbrasil('')
+# resposta = cliente.ativar_sat('satcomum.constantes.CERTIFICADO_ACSAT_SEFAZ', '11111111111111', '35')
+# resposta = cliente.atualizar_software_sat()
+# resposta = cliente.bloquear_sat()
+# resposta = cliente.teste_fim_a_fim(u'CFeVenda')
+# resposta = cliente.desbloquear_sat()
+# resposta = cliente.configurar_interface_de_rede('tipoInter:')
+# resposta = cliente.comunicar_certificado_icpbrasil('')
+
+
+cliente2 = ClienteVfpeLocal(
+   BibliotecaSAT('/opt/Integrador'), # Caminho do Integrador
+   chave_acesso_validador = '123456789'
+)
+#
+# resposta = cliente2.verificar_status_validador('1','1')
+resposta = cliente2.enviar_pagamento('1','2','3','4','5','6','7','8','9','10',
+                                      '11', '12','13','14','15')
+# resposta = cliente2.enviar_pagamentos_armazenamento_local()
+# resposta = cliente2.resposta_fiscal('1', '2', '3', '4', '5', '6', '7', '8', '9')
 #
 #
-# # cliente2 = ClienteVfpeLocal(
-# #    BibliotecaSAT('/opt/Integrador'), # Caminho do Integrador
-# #    chave_acesso_validador = '123456789'
-# # )
-# #
-# # resposta = cliente2.verificar_status_validador('1','1')
-# # resposta = cliente2.enviar_pagamento('1','2','3','4','5','6','7','8','9','10',
-# #                                       '11', '12','13','14','15')
-# # resposta = cliente2.enviar_pagamentos_armazenamento_local()
-# # resposta = cliente2.resposta_fiscal('1', '2', '3', '4', '5', '6', '7', '8', '9')
-# #
-# #
-# # resposta = cliente2.enviar_status_pagamento('1','1','1','11/11/11','1','1',
-# #                                             '1','1','1','1','1111')
-# # print resposta
-# #
-# # resposta = cliente2.recuperar_dados_locais_enviados()
-# # print resposta
+# resposta = cliente2.enviar_status_pagamento('1','1','1','11/11/11','1','1',
+#                                             '1','1','1','1','1111')
+# print resposta
+#
+# resposta = cliente2.recuperar_dados_locais_enviados()
+# print resposta
