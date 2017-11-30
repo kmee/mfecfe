@@ -64,7 +64,9 @@ class MonitorIntegrador(PatternMatchingEventHandler):
             xml_string = xml_source.read()
             parsed = xmltodict.parse(xml_string)
             self.observer.src_path = event.src_path
-            self.observer.resposta = parsed.get('Integrador', {}).get('Resposta', {}).get('retorno')
+            self.observer.resposta = parsed.get('Integrador', {}).get('Resposta', {}).get('retorno') or parsed.get(
+                'Integrador', {}).get('Resposta', {}).get('IdPagamento') or parsed.get('Integrador', {}).get('Resposta',
+                                                                                                             {})
             self.observer.numero_identificador = parsed.get('Integrador', {}).get('Identificador', {}).get('Valor')
 
     def on_modified(self, event):
@@ -119,7 +121,7 @@ class BibliotecaSAT(object):
 
     def __init__(self, caminho, convencao=None):
         self._libsat = None
-        self._caminho = caminho
+        self._caminho = self.limpa_formatacao_caminho_integrador(caminho)
         self._convencao = convencao
 
     @property
@@ -140,6 +142,14 @@ class BibliotecaSAT(object):
         disponíveis na contante :attr:`~satcomum.constantes.CONVENCOES_CHAMADA`.
         """
         return self._convencao
+
+    def limpa_formatacao_caminho_integrador(self, caminho):
+        if caminho[0] != '/':
+            caminho = '/' + caminho
+        if caminho[len(caminho)-1] != '/':
+            caminho = caminho + '/'
+
+        return caminho.replace('\\', '/')
 
 
 class NumeroSessaoMemoria(object):
@@ -286,7 +296,7 @@ class FuncoesSAT(object):
 
         xml = render_xml(self._path, template, True, **kwargs)
         xml.write(
-            '/opt/integrador/input/' + str(numero_identificador) + '-' + template.lower(),
+            str(self.biblioteca.caminho)+'input/' + str(numero_identificador) + '-' + template.lower(),
             xml_declaration=True,
             encoding='UTF-8'
         )
@@ -294,7 +304,7 @@ class FuncoesSAT(object):
         observer = Observer()
         observer.numero_identificador = False
         observer.src_path = False
-        observer.schedule(MonitorIntegrador(observer), path='/opt/integrador/output')
+        observer.schedule(MonitorIntegrador(observer), path=str(self.biblioteca.caminho)+'output')
         observer.start()
 
         while True:
@@ -640,15 +650,20 @@ class FuncoesSAT(object):
 
 
 class FuncoesVFPE(object):
-    def __init__(self, biblioteca, chave_acesso_validador=None):
+    def __init__(self, biblioteca, chave_acesso_validador=None, numerador_sessao=None):
         self._biblioteca = biblioteca
         self._chave_acesso_validador = chave_acesso_validador
+        self._numerador_sessao = numerador_sessao or NumeroSessaoMemoria()
         self._path = os.path.join(os.path.dirname(__file__), 'templates/')
 
 
     @property
     def biblioteca(self):
         return self._biblioteca
+
+    def gerar_numero_sessao(self):
+        """Gera o número de sessão para a próxima invocação de função SAT."""
+        return self._numerador_sessao()
 
     @property
     def chave_acesso_validador(self):
@@ -667,19 +682,34 @@ class FuncoesVFPE(object):
                 self.__class__.__name__, name))
 
     def comando_vfpe(self, template, **kwargs):
-        kwargs['numero_identificador'] = 999999
-        xml = render_xml(self._path, template, True, **kwargs)
+        numero_identificador = kwargs.get(
+            'numero_sessao',
+            self.gerar_numero_sessao()
+        )
 
-        # xml = render_xml(self._path, 'ConsultarMFe.xml', True, consulta=consulta)
-        # print xml
-        # Colocar xml na pasta de input
-        from os.path import expanduser
-        home = expanduser("~")
-        xml.write(home + '/Integrador/input/' + str(self._chave_acesso_validador) + '.xml', xml_declaration=True, encoding='UTF-8')
-        # Ler o retorno
-        # retornar o retorno
-        # return self.invocar__ConsultarSAT(self.gerar_numero_sessao())
-        print xml
+        kwargs['numero_identificador'] = numero_identificador
+        xml = render_xml(self._path, template, True, **kwargs)
+        xml.write(
+            str(self.biblioteca.caminho)+'input/' + str(numero_identificador) + '-' + template.lower(),
+            xml_declaration=True,
+            encoding='UTF-8'
+        )
+
+        observer = Observer()
+        observer.numero_identificador = False
+        observer.src_path = False
+        observer.schedule(MonitorIntegrador(observer), path=str(self.biblioteca.caminho)+'output')
+        observer.start()
+
+        while True:
+            # Analisa a pasta a cada um segundo.
+            time.sleep(1)
+            if str(numero_identificador) == observer.numero_identificador and observer.src_path:
+                # Ao encontrar um arquivo de retorno com o mesmo numero identificador da remessa sai do loop.
+                break
+        observer.stop()
+        observer.join()
+        return observer.resposta
 
     def verificar_status_validador(self, cpnj, id_fila):
         """Função ``VerificarStatusValidador`` conforme ER SAT, item 6.1.14. Desbloqueio
@@ -693,6 +723,7 @@ class FuncoesVFPE(object):
             'id_fila': id_fila,
             'cnpj': cpnj,
         }
+
         return self.comando_vfpe('VerificarStatusValidador.xml', consulta=consulta)
 
     def enviar_pagamentos_armazenamento_local(self):
@@ -708,14 +739,12 @@ class FuncoesVFPE(object):
         return self.comando_vfpe('EnviarPagamentosEmArmazenamentoLocal.xml',
                                  consulta=consulta)
 
-    def enviar_pagamento(self, id, chave_requisicao, estabecimento, serial_pos,
+    def enviar_pagamento(self, chave_requisicao, estabecimento, serial_pos,
                          cpnj, icms_base, vr_total_venda, id_fila_validador,
-                         tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
-                         cod_moeda, endereco_ip, origem_pagemento,
-                         cupom_nfce):
+                         h_multiplos_pagamentos, h_anti_fraude,
+                         cod_moeda, origem_pagemento):
         consulta = {
             'chave_acesso_validador': self._chave_acesso_validador,
-            'id': id,
             'chave_requisicao': chave_requisicao,
             'estabecimento': estabecimento,
             'serial_pos': serial_pos,
@@ -723,13 +752,10 @@ class FuncoesVFPE(object):
             'icms_base': icms_base,
             'vr_total_venda': vr_total_venda,
             'id_fila_validador': id_fila_validador,
-            'tipo_maquina': tipo_maquina,
             'h_multiplos_pagamentos': h_multiplos_pagamentos,
             'h_anti_fraude': h_anti_fraude,
             'cod_moeda': cod_moeda,
-            'endereco_ip': endereco_ip,
-            'origem_pagemento': origem_pagemento,
-            'cupom_nfce': cupom_nfce,
+            'origem_pagemento': origem_pagemento
         }
         return self.comando_vfpe('EnviarPagamento.xml', consulta=consulta)
 
@@ -779,4 +805,5 @@ class FuncoesVFPE(object):
             'numero_documento': numero_documento,
         }
         return self.comando_vfpe("RespostaFiscal.xml", consulta=consulta)
+
 

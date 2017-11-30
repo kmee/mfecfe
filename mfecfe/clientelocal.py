@@ -201,19 +201,21 @@ class ClienteVfpeLocal(FuncoesVFPE):
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
-        retorno = super(ClienteVfpeLocal, self). \
+        resposta = super(ClienteVfpeLocal, self). \
             verificar_status_validador(cpnj, id_fila)
+        return RespostaEnviarDadosVenda.analisarVFPE(resposta)
 
-    def enviar_pagamento(self, id, chave_requisicao, estabecimento, serial_pos,
+
+    def enviar_pagamento(self, chave_requisicao, estabecimento, serial_pos,
                          cpnj, icms_base, vr_total_venda, id_fila_validador,
-                         tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
-                         cod_moeda, endereco_ip, origem_pagemento,
+                         h_multiplos_pagamentos, h_anti_fraude,
+                         cod_moeda, origem_pagemento,
                          cupom_nfce):
-        retorno = super(ClienteVfpeLocal, self). \
-            enviar_pagamento(id, chave_requisicao, estabecimento, serial_pos,
+        return super(ClienteVfpeLocal, self). \
+            enviar_pagamento(chave_requisicao, estabecimento, serial_pos,
                              cpnj, icms_base, vr_total_venda, id_fila_validador,
-                             tipo_maquina, h_multiplos_pagamentos, h_anti_fraude,
-                             cod_moeda, endereco_ip, origem_pagemento,
+                             h_multiplos_pagamentos, h_anti_fraude,
+                             cod_moeda, origem_pagemento,
                              cupom_nfce)
 
     def enviar_status_pagamento(self, codigo_autorizacao, bin, dono_cartao,
