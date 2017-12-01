@@ -296,9 +296,7 @@ class FuncoesSAT(object):
 
         xml = render_xml(self._path, template, True, **kwargs)
         xml.write(
-            str(
-              
-              .caminho)+'input/' + str(numero_identificador) + '-' + template.lower(),
+            str(self.biblioteca.caminho)+'input/' + str(numero_identificador) + '-' + template.lower(),
             xml_declaration=True,
             encoding='UTF-8'
         )
