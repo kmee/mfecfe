@@ -210,13 +210,13 @@ class ClienteVfpeLocal(FuncoesVFPE):
                          cpnj, icms_base, vr_total_venda, id_fila_validador,
                          h_multiplos_pagamentos, h_anti_fraude,
                          cod_moeda, origem_pagemento,
-                         cupom_nfce):
+                        ):
         return super(ClienteVfpeLocal, self). \
             enviar_pagamento(chave_requisicao, estabecimento, serial_pos,
                              cpnj, icms_base, vr_total_venda, id_fila_validador,
                              h_multiplos_pagamentos, h_anti_fraude,
                              cod_moeda, origem_pagemento,
-                             cupom_nfce)
+                             )
 
     def enviar_status_pagamento(self, codigo_autorizacao, bin, dono_cartao,
                                 data_expiracao, instituicao_financeira, parcelas,
