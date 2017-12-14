@@ -127,14 +127,17 @@ class ClienteSATHub(FuncoesSAT):
                 conteudo.get('retorno'))
 
 
-    def enviar_dados_venda(self, dados_venda):
+    def enviar_dados_venda(self, dados_venda, integrador=False):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.enviar_dados_venda`.
 
         :return: Uma resposta SAT especializada em ``EnviarDadosVenda``.
         :rtype: satcfe.resposta.enviardadosvenda.RespostaEnviarDadosVenda
         """
-        resp = self._http_post('enviardadosvenda',
-                dados_venda=dados_venda.documento())
+        resp = self._http_post(
+            'enviardadosvenda',
+            dados_venda=dados_venda.documento(),
+            caminho_integrador=integrador
+        )
         conteudo = resp.json()
         return RespostaEnviarDadosVenda.analisar(conteudo.get('retorno'))
 
