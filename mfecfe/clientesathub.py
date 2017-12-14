@@ -25,7 +25,7 @@ from satcomum import constantes
 
 import satcfe
 
-from .base import FuncoesSAT
+from .base import FuncoesSAT, FuncoesVFPE
 
 from .resposta import RespostaAtivarSAT
 from .resposta import RespostaCancelarUltimaVenda
@@ -127,14 +127,17 @@ class ClienteSATHub(FuncoesSAT):
                 conteudo.get('retorno'))
 
 
-    def enviar_dados_venda(self, dados_venda):
+    def enviar_dados_venda(self, dados_venda, integrador=False):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.enviar_dados_venda`.
 
         :return: Uma resposta SAT especializada em ``EnviarDadosVenda``.
         :rtype: satcfe.resposta.enviardadosvenda.RespostaEnviarDadosVenda
         """
-        resp = self._http_post('enviardadosvenda',
-                dados_venda=dados_venda.documento())
+        resp = self._http_post(
+            'enviardadosvenda',
+            dados_venda=dados_venda.documento(),
+            caminho_integrador=integrador
+        )
         conteudo = resp.json()
         return RespostaEnviarDadosVenda.analisar(conteudo.get('retorno'))
 
@@ -282,3 +285,58 @@ class ClienteSATHub(FuncoesSAT):
                 codigo_emergencia=codigo_emergencia)
         conteudo = resp.json()
         return RespostaSAT.trocar_codigo_de_ativacao(conteudo.get('retorno'))
+
+
+class ClienteVfpeHub(FuncoesVFPE):
+
+    def __init__(self, host, port, numero_caixa=1, baseurl='/hub/v1'):
+        self._host = host
+        self._port = port
+        self._numero_caixa = numero_caixa
+        self._baseurl = baseurl
+
+    def _request_headers(self):
+        headers = {
+                'user-agent': 'satcfe/{}/ER-{}'.format(
+                        satcfe.__version__, satcfe.VERSAO_ER),
+            }
+        return headers
+
+    def _url(self, metodo):
+        return 'http://{}:{}/{}/{}'.format(
+                self._host,
+                self._port,
+                self._baseurl.strip('/'), metodo)
+
+    def _http_post(self, metodo, **payload):
+        if 'numero_caixa' not in payload:
+            payload.update({'numero_caixa': self._numero_caixa})
+        headers = self._request_headers()
+        resp = requests.post(self._url(metodo), data=payload, headers=headers)
+        resp.raise_for_status()
+        return resp
+
+    def enviar_pagamento(
+            self, chave_requisicao, estabelecimento, serial_pos, cnpjsh,
+            bc_icms_proprio, valor, id_fila_validador, multiplos_pag,
+            anti_fraude, moeda, numero_caixa, chave_acesso_validador,
+            integrador=False):
+        resp = self._http_post(
+            'enviarpagamento',
+            chave_requisicao=chave_requisicao,
+            estabelecimento=estabelecimento,
+            serial_pos=serial_pos,
+            cnpjsh=cnpjsh,
+            bc_icms_proprio=bc_icms_proprio,
+            valor=valor,
+            id_fila_validador=id_fila_validador,
+            multiplos_pag=multiplos_pag,
+            anti_fraude=anti_fraude,
+            moeda=moeda,
+            numero_caixa=numero_caixa,
+            origem_pagamento=numero_caixa,
+            chave_acesso_validador=chave_acesso_validador,
+            caminho_integrador=integrador
+        )
+        conteudo = resp.json()
+        return conteudo.get('retorno')
