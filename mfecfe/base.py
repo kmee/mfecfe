@@ -648,7 +648,6 @@ class FuncoesSAT(object):
         return self.comando_sat('TrocarCodigoDeAtivacao.xml', consulta=consulta)
 
 
-
 class FuncoesVFPE(object):
     def __init__(self, biblioteca, chave_acesso_validador=None, numerador_sessao=None):
         self._biblioteca = biblioteca
