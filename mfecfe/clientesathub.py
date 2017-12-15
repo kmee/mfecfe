@@ -126,7 +126,7 @@ class ClienteSATHub(FuncoesSAT):
         return RespostaSAT.comunicar_certificado_icpbrasil(
                 conteudo.get('retorno'))
 
-
+      
     def enviar_dados_venda(self, dados_venda, codigo_ativacao,
                            integrador=False):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.enviar_dados_venda`.
