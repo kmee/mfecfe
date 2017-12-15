@@ -126,6 +126,7 @@ class ClienteSATHub(FuncoesSAT):
         return RespostaSAT.comunicar_certificado_icpbrasil(
                 conteudo.get('retorno'))
 
+      
     def enviar_dados_venda(self, dados_venda, codigo_ativacao,
                            integrador=False):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.enviar_dados_venda`.
@@ -286,6 +287,14 @@ class ClienteSATHub(FuncoesSAT):
                 codigo_emergencia=codigo_emergencia)
         conteudo = resp.json()
         return RespostaSAT.trocar_codigo_de_ativacao(conteudo.get('retorno'))
+
+    def imprimir_cupom_venda(self, dados_venda, modelo, string_conexao):
+        self._http_post(
+            'imprimirvenda',
+            dados_venda=dados_venda,
+            modelo=modelo,
+            conexao=string_conexao
+        )
 
 
 class ClienteVfpeHub(FuncoesVFPE):
