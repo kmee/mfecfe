@@ -127,7 +127,8 @@ class ClienteSATHub(FuncoesSAT):
                 conteudo.get('retorno'))
 
 
-    def enviar_dados_venda(self, dados_venda, integrador=False):
+    def enviar_dados_venda(self, dados_venda, codigo_ativacao,
+                           integrador=False):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.enviar_dados_venda`.
 
         :return: Uma resposta SAT especializada em ``EnviarDadosVenda``.
@@ -136,6 +137,7 @@ class ClienteSATHub(FuncoesSAT):
         resp = self._http_post(
             'enviardadosvenda',
             dados_venda=dados_venda.documento(),
+            codigo_ativacao=codigo_ativacao,
             caminho_integrador=integrador
         )
         conteudo = resp.json()
@@ -286,10 +288,12 @@ class ClienteSATHub(FuncoesSAT):
         conteudo = resp.json()
         return RespostaSAT.trocar_codigo_de_ativacao(conteudo.get('retorno'))
 
-    def imprimir_cupom_venda(self, dados_venda):
+    def imprimir_cupom_venda(self, dados_venda, modelo, string_conexao):
         self._http_post(
             'imprimirvenda',
             dados_venda=dados_venda,
+            modelo=modelo,
+            conexao=string_conexao
         )
 
 
