@@ -301,6 +301,16 @@ class ClienteSATHub(FuncoesSAT):
             conexao=string_conexao
         )
 
+    def imprimir_cupom_cancelamento(self, dados_venda, dados_cancelamento,
+                                    modelo, string_conexao):
+        self._http_post(
+            'imprimircancelamento',
+            dados_venda=dados_venda,
+            dados_cancelamento=dados_cancelamento,
+            modelo=modelo,
+            conexao=string_conexao
+        )
+
 
 class ClienteVfpeHub(FuncoesVFPE):
 
