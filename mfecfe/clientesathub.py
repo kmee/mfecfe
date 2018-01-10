@@ -345,7 +345,7 @@ class ClienteVfpeHub(FuncoesVFPE):
 
     def enviar_pagamento(
             self, chave_requisicao, estabelecimento, serial_pos, cnpjsh,
-            bc_icms_proprio, valor, id_fila_validador, multiplos_pag,
+            bc_icms_proprio, valor, multiplos_pag,
             anti_fraude, moeda, numero_caixa, chave_acesso_validador,
             integrador=False):
         resp = self._http_post(
@@ -356,13 +356,27 @@ class ClienteVfpeHub(FuncoesVFPE):
             cnpjsh=cnpjsh,
             bc_icms_proprio=bc_icms_proprio,
             valor=valor,
-            id_fila_validador=id_fila_validador,
             multiplos_pag=multiplos_pag,
             anti_fraude=anti_fraude,
             moeda=moeda,
             numero_caixa=numero_caixa,
             origem_pagamento=numero_caixa,
             chave_acesso_validador=chave_acesso_validador,
+            caminho_integrador=integrador
+        )
+        conteudo = resp.json()
+        return conteudo.get('retorno')
+
+    def enviar_status_pagamento(
+            self, cnpj, id_fila, numero_caixa,
+            chave_acesso_validador, integrador=False
+    ):
+        resp = self._http_post(
+            'verificarstatusvalidador',
+            chave_acesso_validador=chave_acesso_validador,
+            numero_caixa=numero_caixa,
+            cnpj=cnpj,
+            id_fila=id_fila,
             caminho_integrador=integrador
         )
         conteudo = resp.json()

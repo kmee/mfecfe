@@ -742,7 +742,7 @@ class FuncoesVFPE(object):
                                  consulta=consulta)
 
     def enviar_pagamento(self, chave_requisicao, estabecimento, serial_pos,
-                         cpnj, icms_base, vr_total_venda, id_fila_validador,
+                         cpnj, icms_base, vr_total_venda,
                          h_multiplos_pagamentos, h_anti_fraude,
                          cod_moeda, origem_pagemento):
         consulta = {
@@ -753,7 +753,6 @@ class FuncoesVFPE(object):
             'cpnj': cpnj,
             'icms_base': icms_base,
             'vr_total_venda': vr_total_venda,
-            'id_fila_validador': id_fila_validador,
             'h_multiplos_pagamentos': h_multiplos_pagamentos,
             'h_anti_fraude': h_anti_fraude,
             'cod_moeda': cod_moeda,

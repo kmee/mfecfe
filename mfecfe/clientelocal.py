@@ -207,13 +207,13 @@ class ClienteVfpeLocal(FuncoesVFPE):
 
 
     def enviar_pagamento(self, chave_requisicao, estabecimento, serial_pos,
-                         cpnj, icms_base, vr_total_venda, id_fila_validador,
+                         cpnj, icms_base, vr_total_venda,
                          h_multiplos_pagamentos, h_anti_fraude,
                          cod_moeda, origem_pagemento,
                         ):
         return super(ClienteVfpeLocal, self). \
             enviar_pagamento(chave_requisicao, estabecimento, serial_pos,
-                             cpnj, icms_base, vr_total_venda, id_fila_validador,
+                             cpnj, icms_base, vr_total_venda,
                              h_multiplos_pagamentos, h_anti_fraude,
                              cod_moeda, origem_pagemento,
                              )
