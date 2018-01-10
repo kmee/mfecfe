@@ -68,8 +68,8 @@ class MonitorIntegrador(PatternMatchingEventHandler):
                 parsed.get('Integrador', {}).get('Resposta', {}).get('retorno') or \
                 parsed.get('Integrador', {}).get('Resposta', {}).get('IdPagamento') or \
                 parsed.get('Integrador', {}).get('Resposta', {})
-            self.observer.resposta += '|' + parsed.get('Integrador', {}).get(
-                'Identificador', {}).get('Valor')
+            if not isinstance(self.observer.resposta, dict):
+                self.observer.resposta += '|' + parsed.get('Integrador', {}).get('Identificador', {}).get('Valor')
             self.observer.numero_identificador = parsed.get('Integrador', {}).get('Identificador', {}).get('Valor')
 
     def on_modified(self, event):
