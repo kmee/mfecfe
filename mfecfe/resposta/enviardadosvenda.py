@@ -99,6 +99,7 @@ class RespostaEnviarDadosVenda(RespostaSAT):
                         ('valorTotalCFe', Decimal),
                         ('CPFCNPJValue', unicode),
                         ('assinaturaQRCODE', unicode),
+                        ('id_fila', unicode),
                     ),
                 campos_alternativos=[
                         # se a venda falhar apenas os primeiros seis campos
