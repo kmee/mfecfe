@@ -162,13 +162,18 @@ class ClienteSATHub(FuncoesSAT):
         return RespostaCancelarUltimaVenda.analisar(conteudo.get('retorno'))
 
 
-    def consultar_sat(self):
+    def consultar_sat(self, numero_caixa, codigo_ativacao, integrador=False):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.consultar_sat`.
 
         :return: Uma resposta SAT padrão.
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
-        resp = self._http_post('consultarsat')
+        resp = self._http_post(
+            'consultarsat',
+            numero_caixa=numero_caixa,
+            codigo_ativacao=codigo_ativacao,
+            caminho_integrador=integrador
+        )
         conteudo = resp.json()
         return RespostaSAT.consultar_sat(conteudo.get('retorno'))
 
