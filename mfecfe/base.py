@@ -289,32 +289,49 @@ class FuncoesSAT(object):
                 self.__class__.__name__, name))
 
     def comando_sat(self, template, **kwargs):
-
-        numero_identificador = kwargs.get(
-            'numero_sessao',
-            self.gerar_numero_sessao()
-        )
+        if kwargs['consulta']['numero_identificador'] != 'False':
+            numero_identificador = kwargs.get(
+                'numero_sessao',
+                kwargs['consulta']['numero_identificador'],
+            )
+        else:
+            numero_identificador = kwargs.get(
+                'numero_sessao',
+                self.gerar_numero_sessao(),
+            )
 
         kwargs['numero_identificador'] = numero_identificador
-
-        xml = render_xml(self._path, template, True, **kwargs)
-        xml.write(
-            str(self.biblioteca.caminho)+'input/' + str(numero_identificador) + '-' + template.lower(),
-            xml_declaration=True,
-            encoding='UTF-8'
-        )
+        path_file = self.biblioteca.caminho+'input/' + str(numero_identificador) + '-' + template.lower()
+        # remove arquivo se ele existir
+        if os.path.isfile(path_file):
+            os.remove(path_file)
 
         observer = Observer()
         observer.numero_identificador = False
         observer.src_path = False
-        observer.schedule(MonitorIntegrador(observer), path=str(self.biblioteca.caminho)+'output')
+        observer.schedule(MonitorIntegrador(observer), path=self.biblioteca.caminho+'output')
         observer.start()
 
+        xml = render_xml(self._path, template, True, **kwargs)
+        xml.write(
+            path_file,
+            xml_declaration=True,
+            encoding='UTF-8'
+        )
+
+        cont_time = 0
         while True:
             # Analisa a pasta a cada um segundo.
+            # entra10 vezes e sai da verificacao
             time.sleep(1)
-            if str(numero_identificador) == observer.numero_identificador and observer.src_path:
+            cont_time = cont_time + 1
+            if (str(numero_identificador) == str(observer.numero_identificador) and \
+                observer.src_path):
                 # Ao encontrar um arquivo de retorno com o mesmo numero identificador da remessa sai do loop.
+                break
+            if  cont_time == 10:
+                observer.resposta = str(numero_identificador)+'|'+str(numero_identificador)+'|'+'0'+'|'+'Erro interno'+'|'+'0'+'|'+'ERRO'
+                # Ao nao encontrar um arquivo de retorno com o mesmo numero identificador
                 break
         observer.stop()
         observer.join()
@@ -373,7 +390,7 @@ class FuncoesSAT(object):
         }
         return self.comando_sat('ComunicarCertificadoICPBRASIL.xml', consulta=consulta)
 
-    def enviar_dados_venda(self, dados_venda):
+    def enviar_dados_venda(self, dados_venda, numero_identificador):
         """Função ``EnviarDadosVenda`` conforme ER SAT, item 6.1.3. Envia o
         CF-e de venda para o equipamento SAT, que o enviará para autorização
         pela SEFAZ.
@@ -387,12 +404,16 @@ class FuncoesSAT(object):
         cfe_venda = dados_venda \
             if isinstance(dados_venda, basestring) \
             else dados_venda.documento()
-
+        if isinstance(self._numerador_sessao, basestring):
+            numero_sessao = self._numerador_sessao
+        else:
+            numero_sessao = self.gerar_numero_sessao()
         consulta = {
-            'numero_sessao': self.gerar_numero_sessao(),
+            'numero_sessao': numero_sessao,
             'codigo_ativacao': self._codigo_ativacao,
             'cfe_venda': cfe_venda,
             'numero_documento': 10,  # FIXME
+            'numero_identificador': numero_identificador,  # FIXME
         }
         return self.comando_sat('EnviarDadosVenda.xml', consulta=consulta)
 
@@ -684,30 +705,49 @@ class FuncoesVFPE(object):
                 self.__class__.__name__, name))
 
     def comando_vfpe(self, template, **kwargs):
-        numero_identificador = kwargs.get(
-            'numero_sessao',
-            self.gerar_numero_sessao()
-        )
+        if kwargs['numero_identificador'] != 'False':
+            numero_identificador = kwargs.get(
+                'numero_sessao',
+                kwargs['numero_identificador'],
+            )
+        else:
+            numero_identificador = kwargs.get(
+                'numero_sessao',
+                self.gerar_numero_sessao(),
+            )
 
         kwargs['numero_identificador'] = numero_identificador
-        xml = render_xml(self._path, template, True, **kwargs)
-        xml.write(
-            str(self.biblioteca.caminho)+'input/' + str(numero_identificador) + '-' + template.lower(),
-            xml_declaration=True,
-            encoding='UTF-8'
-        )
+        path_file = self.biblioteca.caminho+'input/' + str(numero_identificador) + '-' + template.lower()
+        # remove arquivo se ele existir
+        if os.path.isfile(path_file):
+            os.remove(path_file)
 
         observer = Observer()
         observer.numero_identificador = False
         observer.src_path = False
-        observer.schedule(MonitorIntegrador(observer), path=str(self.biblioteca.caminho)+'output')
+        observer.schedule(MonitorIntegrador(observer), path=self.biblioteca.caminho+'output')
         observer.start()
 
+        xml = render_xml(self._path, template, True, **kwargs)
+        xml.write(
+            path_file,
+            xml_declaration=True,
+            encoding='UTF-8'
+        )
+
+        cont_time = 0
         while True:
             # Analisa a pasta a cada um segundo.
+            # entra10 vezes e sai da verificacao
             time.sleep(1)
-            if str(numero_identificador) == observer.numero_identificador and observer.src_path:
+            cont_time = cont_time + 1
+            if (str(numero_identificador) == str(observer.numero_identificador) and \
+                observer.src_path):
                 # Ao encontrar um arquivo de retorno com o mesmo numero identificador da remessa sai do loop.
+                break
+            if  cont_time == 10:
+                observer.resposta = str(numero_identificador)+'|'+str(numero_identificador)+'|'+'0'+'|'+'Erro interno'+'|'+'0'+'|'+'ERRO'
+                # Ao nao encontrar um arquivo de retorno com o mesmo numero identificador
                 break
         observer.stop()
         observer.join()
@@ -744,7 +784,7 @@ class FuncoesVFPE(object):
     def enviar_pagamento(self, chave_requisicao, estabecimento, serial_pos,
                          cpnj, icms_base, vr_total_venda,
                          h_multiplos_pagamentos, h_anti_fraude,
-                         cod_moeda, origem_pagemento):
+                         cod_moeda, origem_pagemento, numero_identificador):
         consulta = {
             'chave_acesso_validador': self._chave_acesso_validador,
             'chave_requisicao': chave_requisicao,
@@ -756,7 +796,8 @@ class FuncoesVFPE(object):
             'h_multiplos_pagamentos': h_multiplos_pagamentos,
             'h_anti_fraude': h_anti_fraude,
             'cod_moeda': cod_moeda,
-            'origem_pagemento': origem_pagemento
+            'origem_pagemento': origem_pagemento,
+            'numero_identificador': numero_identificador
         }
         return self.comando_vfpe('EnviarPagamento.xml', consulta=consulta)
 
@@ -806,5 +847,4 @@ class FuncoesVFPE(object):
             'numero_documento': numero_documento,
         }
         return self.comando_vfpe("RespostaFiscal.xml", consulta=consulta)
-
 
