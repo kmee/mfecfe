@@ -289,12 +289,15 @@ class FuncoesSAT(object):
                 self.__class__.__name__, name))
 
     def comando_sat(self, template, **kwargs):
-        if kwargs['consulta']['numero_identificador'] != 'False':
-            numero_identificador = kwargs.get(
-                'numero_sessao',
-                kwargs['consulta']['numero_identificador'],
-            )
-        else:
+        numero_identificador = False
+        if kwargs['consulta'].get('numero_identificador'):
+            if kwargs['consulta']['numero_identificador']:
+                numero_identificador = kwargs.get(
+                    'numero_sessao',
+                    kwargs['consulta']['numero_identificador'],
+                )
+
+        if not numero_identificador:
             numero_identificador = kwargs.get(
                 'numero_sessao',
                 self.gerar_numero_sessao(),
