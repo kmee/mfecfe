@@ -111,6 +111,7 @@ class RespostaEnviarDadosVenda(RespostaSAT):
                                 ('mensagem', unicode),
                                 ('cod', unicode),
                                 ('mensagemSEFAZ', unicode),
+                                ('id_fila', unicode),
                         ),
                         # por via das dúvidas, considera o padrão de campos,
                         # caso não haja nenhuma coincidência...

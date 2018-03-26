@@ -35,6 +35,7 @@ from .resposta import RespostaEnviarDadosVenda
 from .resposta import RespostaExtrairLogs
 from .resposta import RespostaSAT
 from .resposta import RespostaTesteFimAFim
+from .resposta import RespostaConsultarSAT
 
 
 class ClienteSATHub(FuncoesSAT):
@@ -175,7 +176,7 @@ class ClienteSATHub(FuncoesSAT):
             caminho_integrador=integrador
         )
         conteudo = resp.json()
-        return RespostaSAT.consultar_sat(conteudo.get('retorno'))
+        return RespostaConsultarSAT.analisar(conteudo.get('retorno'))
 
 
     def teste_fim_a_fim(self, dados_venda):

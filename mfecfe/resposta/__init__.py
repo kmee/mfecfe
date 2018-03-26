@@ -25,3 +25,4 @@ from .enviardadosvenda import RespostaEnviarDadosVenda
 from .extrairlogs import RespostaExtrairLogs
 from .padrao import RespostaSAT
 from .testefimafim import RespostaTesteFimAFim
+from .consultarsat import RespostaConsultarSAT

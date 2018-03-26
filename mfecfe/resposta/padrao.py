@@ -61,7 +61,6 @@ class RespostaSAT(object):
             ('mensagem', unicode),
             ('cod', unicode),
             ('mensagemSEFAZ', unicode),
-            ('id_fila', unicode),
         )
     """Campos padrão esperados em uma resposta e a sua função de conversão para
     o tipo Python, a partir da resposta original (unicode).

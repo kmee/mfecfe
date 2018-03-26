@@ -30,6 +30,7 @@ from .resposta import RespostaEnviarDadosVenda
 from .resposta import RespostaExtrairLogs
 from .resposta import RespostaSAT
 from .resposta import RespostaTesteFimAFim
+from .resposta import RespostaConsultarSAT
 
 
 class ClienteSATLocal(FuncoesSAT):
@@ -90,7 +91,7 @@ class ClienteSATLocal(FuncoesSAT):
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         retorno = super(ClienteSATLocal, self).consultar_sat()
-        return RespostaSAT.consultar_sat(retorno)
+        return RespostaConsultarSAT.analisar(retorno)
 
     def teste_fim_a_fim(self, dados_venda):
         """Sobrepõe :meth:`~satcfe.base.FuncoesSAT.teste_fim_a_fim`.
