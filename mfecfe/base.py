@@ -289,7 +289,7 @@ class FuncoesSAT(object):
                 self.__class__.__name__, name))
 
     def comando_sat(self, template, **kwargs):
-        if kwargs['consulta']['numero_identificador'] != 'False':
+        if kwargs['consulta'].get('numero_identificador'):
             numero_identificador = kwargs.get(
                 'numero_sessao',
                 kwargs['consulta']['numero_identificador'],
@@ -390,7 +390,7 @@ class FuncoesSAT(object):
         }
         return self.comando_sat('ComunicarCertificadoICPBRASIL.xml', consulta=consulta)
 
-    def enviar_dados_venda(self, dados_venda, numero_identificador):
+    def enviar_dados_venda(self, dados_venda, numero_identificador=None):
         """Função ``EnviarDadosVenda`` conforme ER SAT, item 6.1.3. Envia o
         CF-e de venda para o equipamento SAT, que o enviará para autorização
         pela SEFAZ.
@@ -401,6 +401,8 @@ class FuncoesSAT(object):
         :return: Retorna *verbatim* a resposta da função SAT.
         :rtype: string
         """
+        if not numero_identificador:
+            numero_identificador=self.gerar_numero_sessao()
         cfe_venda = dados_venda \
             if isinstance(dados_venda, basestring) \
             else dados_venda.documento()
