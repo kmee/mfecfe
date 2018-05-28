@@ -1,6 +1,6 @@
 cerberus == 0.9.2
-requests >= 2.7.0
-unidecode >= 0.4.19
+requests
+unidecode
 satcomum >= 0.0.8
 lxml >= 3.5.0, < 4
 Jinja2
