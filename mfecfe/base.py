@@ -705,10 +705,10 @@ class FuncoesVFPE(object):
                 self.__class__.__name__, name))
 
     def comando_vfpe(self, template, **kwargs):
-        if kwargs['numero_identificador'] != 'False':
+        if kwargs['consulta'].get('numero_identificador') != None and kwargs['consulta'].get('numero_identificador') != 'False':
             numero_identificador = kwargs.get(
                 'numero_sessao',
-                kwargs['numero_identificador'],
+                kwargs['consulta']['numero_identificador'],
             )
         else:
             numero_identificador = kwargs.get(
