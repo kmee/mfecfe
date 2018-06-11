@@ -29,6 +29,25 @@ class ErroRespostaSATInvalida(Exception):
     """
     pass
 
+class ErroRespostaMFEEnviarPagamento(Exception):
+    """
+    Lançada quando a resposta dada por uma função da DLL SAT não contém
+    informação que faça sentido dentro do contexto. Este erro é diferente de
+    uma :exc:`ExcecaoRespostaSAT` que é lançada quando a resposta faz sentido
+    mas é interpretada como uma exceção a um comando que falhou.
+    """
+    pass
+
+class ErroRespostaMFEVerificarStatusValidador(Exception):
+    """
+    Lançada quando a resposta dada por uma função da DLL SAT não contém
+    informação que faça sentido dentro do contexto. Este erro é diferente de
+    uma :exc:`ExcecaoRespostaSAT` que é lançada quando a resposta faz sentido
+    mas é interpretada como uma exceção a um comando que falhou.
+    """
+    pass
+
+
 
 class ExcecaoRespostaSAT(Exception):
     """
