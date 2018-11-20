@@ -25,6 +25,11 @@ sudo apt-get install mono-complete uuid-runtime axel
 ```
 cd ~/Downloads
 axel https://integrador.blob.core.windows.net/integrador/instalador-ce-sefaz-driver-linux-x64-02.04.07.tar.gz
+ou 
+axel http://www.sefaz.ce.gov.br/content/aplicacao/internet/download/projetomfe/instalador-ce-sefaz-driver-linux-x64-02.04.09.tar.gz
+
+
+
 axel https://integrador.blob.core.windows.net/linuxwithoutui/sqlite-netFx-full-source-1.0.105.2.zip
 axel https://integrador.blob.core.windows.net/linuxwithoutui/IntegradorLinuxServidor.zip
 ```
