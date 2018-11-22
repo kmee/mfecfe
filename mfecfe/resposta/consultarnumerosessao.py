@@ -92,8 +92,9 @@ class RespostaConsultarNumeroSessao(RespostaSAT):
                         ('mensagem', unicode),
                         ('cod', unicode),
                         ('mensagemSEFAZ', unicode),
-                    ),
+                        ('id_fila', unicode),
+                ),
             )
-        if resposta.EEEEE not in ('11000',):
+        if resposta.EEEEE not in ('11000', '11003'):
             raise ExcecaoRespostaSAT(resposta)
         return resposta
