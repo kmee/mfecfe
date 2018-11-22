@@ -275,7 +275,13 @@ class FuncoesSAT(object):
 
     def gerar_numero_sessao(self):
         """Gera o número de sessão para a próxima invocação de função SAT."""
-        return self._numerador_sessao()
+
+        if isinstance(self._numerador_sessao, basestring):
+            numero_sessao = self._numerador_sessao
+        else:
+            numero_sessao = self._numerador_sessao()
+
+        return numero_sessao
 
     def __getattr__(self, name):
         if name.startswith('invocar__'):
@@ -404,15 +410,14 @@ class FuncoesSAT(object):
         :return: Retorna *verbatim* a resposta da função SAT.
         :rtype: string
         """
+
+        # Tanto o sathub quanto o satlocal! Executem a logica.
+
         cfe_venda = dados_venda \
             if isinstance(dados_venda, basestring) \
             else dados_venda.documento()
-        if isinstance(self._numerador_sessao, basestring):
-            numero_sessao = self._numerador_sessao
-        else:
-            numero_sessao = self.gerar_numero_sessao()
         consulta = {
-            'numero_sessao': numero_sessao,
+            'numero_sessao': self.gerar_numero_sessao(),
             'codigo_ativacao': self._codigo_ativacao,
             'cfe_venda': cfe_venda,
             'numero_documento': 10,  # FIXME
