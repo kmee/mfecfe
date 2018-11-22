@@ -507,6 +507,7 @@ class FuncoesSAT(object):
         consulta = {
             'codigo_ativacao': self._codigo_ativacao,
             'numero_sessao': numero_sessao,
+            'numero_identificador': numero_sessao,
             }
         return self.comando_sat('ConsultarNumeroSessao.xml', consulta=consulta)
 
