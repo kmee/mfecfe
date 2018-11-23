@@ -335,7 +335,7 @@ class ClienteVfpeHub(FuncoesVFPE):
             self, chave_requisicao, estabelecimento, serial_pos, cnpjsh,
             bc_icms_proprio, valor, multiplos_pag,
             anti_fraude, moeda, numero_caixa, chave_acesso_validador,
-            integrador=False, numero_identificador=False):
+            integrador=False):
         resp = self._http_post(
             'enviarpagamento',
             chave_requisicao=chave_requisicao,
@@ -351,7 +351,6 @@ class ClienteVfpeHub(FuncoesVFPE):
             origem_pagamento=numero_caixa,
             chave_acesso_validador=chave_acesso_validador,
             caminho_integrador=integrador,
-            numero_identificador=numero_identificador
         )
         conteudo = resp.json()
         return conteudo.get('retorno')

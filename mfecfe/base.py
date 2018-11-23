@@ -260,6 +260,7 @@ class FuncoesSAT(object):
         self._biblioteca = biblioteca
         self._codigo_ativacao = codigo_ativacao
         self._numerador_sessao = numerador_sessao or NumeroSessaoMemoria()
+        self._numerador_identificador = NumeroSessaoMemoria()
         self._path = os.path.join(os.path.dirname(__file__), 'templates')
 
 
@@ -295,19 +296,11 @@ class FuncoesSAT(object):
                 self.__class__.__name__, name))
 
     def comando_sat(self, template, **kwargs):
-        numero_identificador = False
-        if kwargs['consulta'].get('numero_identificador'):
-            if kwargs['consulta']['numero_identificador']:
-                numero_identificador = kwargs.get(
-                    'numero_sessao',
-                    kwargs['consulta']['numero_identificador'],
-                )
 
-        if not numero_identificador:
-            numero_identificador = kwargs.get(
-                'numero_sessao',
-                self.gerar_numero_sessao(),
-            )
+        numero_identificador = kwargs.get(
+            'numero_identificador',
+            NumeroSessaoMemoria()(),
+        )
 
         kwargs['numero_identificador'] = numero_identificador
         path_file = self.biblioteca.caminho+'input/' + str(numero_identificador) + '-' + template.lower()
@@ -399,7 +392,7 @@ class FuncoesSAT(object):
         }
         return self.comando_sat('ComunicarCertificadoICPBRASIL.xml', consulta=consulta)
 
-    def enviar_dados_venda(self, dados_venda, numero_identificador):
+    def enviar_dados_venda(self, dados_venda):
         """Função ``EnviarDadosVenda`` conforme ER SAT, item 6.1.3. Envia o
         CF-e de venda para o equipamento SAT, que o enviará para autorização
         pela SEFAZ.
@@ -420,8 +413,6 @@ class FuncoesSAT(object):
             'numero_sessao': self.gerar_numero_sessao(),
             'codigo_ativacao': self._codigo_ativacao,
             'cfe_venda': cfe_venda,
-            'numero_documento': 10,  # FIXME
-            'numero_identificador': numero_identificador,  # FIXME
         }
         return self.comando_sat('EnviarDadosVenda.xml', consulta=consulta)
 
@@ -512,7 +503,6 @@ class FuncoesSAT(object):
         consulta = {
             'codigo_ativacao': self._codigo_ativacao,
             'numero_sessao': numero_sessao,
-            'numero_identificador': numero_sessao,
             }
         return self.comando_sat('ConsultarNumeroSessao.xml', consulta=consulta)
 
@@ -714,16 +704,10 @@ class FuncoesVFPE(object):
                 self.__class__.__name__, name))
 
     def comando_vfpe(self, template, **kwargs):
-        if kwargs['numero_identificador'] != 'False':
-            numero_identificador = kwargs.get(
-                'numero_sessao',
-                kwargs['numero_identificador'],
-            )
-        else:
-            numero_identificador = kwargs.get(
-                'numero_sessao',
-                self.gerar_numero_sessao(),
-            )
+        numero_identificador = kwargs.get(
+            'numero_identificador',
+            NumeroSessaoMemoria()(),
+        )
 
         kwargs['numero_identificador'] = numero_identificador
         path_file = self.biblioteca.caminho+'input/' + str(numero_identificador) + '-' + template.lower()
@@ -790,10 +774,10 @@ class FuncoesVFPE(object):
         return self.comando_vfpe('EnviarPagamentosEmArmazenamentoLocal.xml',
                                  consulta=consulta)
 
-    def enviar_pagamento(self, chave_requisicao, estabecimento, serial_pos,
-                         cpnj, icms_base, vr_total_venda,
-                         h_multiplos_pagamentos, h_anti_fraude,
-                         cod_moeda, origem_pagemento, numero_identificador):
+    def enviar_pagamento(self, chave_requisicao=False, estabecimento=False, serial_pos=False,
+                         cpnj=False, icms_base=False, vr_total_venda=False,
+                         h_multiplos_pagamentos=False, h_anti_fraude=False,
+                         cod_moeda=False, origem_pagemento=False, **kwargs):
         consulta = {
             'chave_acesso_validador': self._chave_acesso_validador,
             'chave_requisicao': chave_requisicao,
@@ -806,7 +790,6 @@ class FuncoesVFPE(object):
             'h_anti_fraude': h_anti_fraude,
             'cod_moeda': cod_moeda,
             'origem_pagemento': origem_pagemento,
-            'numero_identificador': numero_identificador
         }
         return self.comando_vfpe('EnviarPagamento.xml', consulta=consulta)
 
