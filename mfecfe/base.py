@@ -672,20 +672,15 @@ class FuncoesSAT(object):
 
 
 class FuncoesVFPE(object):
-    def __init__(self, biblioteca, chave_acesso_validador=None, numerador_sessao=None):
+    def __init__(self, biblioteca, chave_acesso_validador=None):
         self._biblioteca = biblioteca
         self._chave_acesso_validador = chave_acesso_validador
-        self._numerador_sessao = numerador_sessao or NumeroSessaoMemoria()
         self._path = os.path.join(os.path.dirname(__file__), 'templates/')
 
 
     @property
     def biblioteca(self):
         return self._biblioteca
-
-    def gerar_numero_sessao(self):
-        """Gera o número de sessão para a próxima invocação de função SAT."""
-        return self._numerador_sessao()
 
     @property
     def chave_acesso_validador(self):
