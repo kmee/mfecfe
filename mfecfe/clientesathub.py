@@ -136,6 +136,7 @@ class ClienteSATHub(FuncoesSAT):
             dados_venda=dados_venda.documento(),
             codigo_ativacao=codigo_ativacao,
             caminho_integrador=integrador,
+            numero_sessao=self.gerar_numero_sessao(),
         )
         conteudo = resp.json()
         return RespostaEnviarDadosVenda.analisar(conteudo.get('retorno'))
