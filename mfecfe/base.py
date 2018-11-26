@@ -262,6 +262,7 @@ class FuncoesSAT(object):
         self._numerador_sessao = numerador_sessao or NumeroSessaoMemoria()
         self._numerador_identificador = NumeroSessaoMemoria()
         self._path = os.path.join(os.path.dirname(__file__), 'templates')
+        self._ultima_sessao = False
 
 
     @property
@@ -279,6 +280,9 @@ class FuncoesSAT(object):
 
         if isinstance(self._numerador_sessao, basestring):
             numero_sessao = self._numerador_sessao
+            if self._ultima_sessao == numero_sessao:
+                raise ValueError('Troque o número da sessao!')
+            self._ultima_sessao = numero_sessao
         else:
             numero_sessao = self._numerador_sessao()
 
