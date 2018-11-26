@@ -25,7 +25,7 @@ from satcomum import constantes
 
 import satcfe
 
-from .base import FuncoesSAT, FuncoesVFPE
+from .base import FuncoesSAT, FuncoesVFPE, NumeroSessaoMemoria
 
 from .resposta import RespostaAtivarSAT
 from .resposta import RespostaCancelarUltimaVenda
@@ -69,11 +69,14 @@ class ClienteSATHub(FuncoesSAT):
 
     """
 
-    def __init__(self, host, port, numero_caixa=1, baseurl='/hub/v1'):
+    def __init__(self, host, port, numero_caixa=1, baseurl='/hub/v1', numerador_sessao=False, codigo_ativacao=None):
         self._host = host
         self._port = port
         self._numero_caixa = numero_caixa
+        self._numerador_sessao = numerador_sessao or NumeroSessaoMemoria()
         self._baseurl = baseurl
+        self._ultima_sessao = False
+        self._codigo_ativacao = codigo_ativacao
 
     def _request_headers(self):
         headers = {
@@ -304,11 +307,12 @@ class ClienteSATHub(FuncoesSAT):
 
 class ClienteVfpeHub(FuncoesVFPE):
 
-    def __init__(self, host, port, numero_caixa=1, baseurl='/hub/v1'):
+    def __init__(self, host, port, numero_caixa=1, baseurl='/hub/v1', chave_acesso_validador=None):
         self._host = host
         self._port = port
         self._numero_caixa = numero_caixa
         self._baseurl = baseurl
+        self._chave_acesso_validador = chave_acesso_validador
 
     def _request_headers(self):
         headers = {
