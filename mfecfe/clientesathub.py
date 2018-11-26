@@ -202,7 +202,8 @@ class ClienteSATHub(FuncoesSAT):
         :rtype: satcfe.resposta.padrao.RespostaSAT
         """
         resp = self._http_post('consultarnumerosessao',
-                               numero_sessao=numero_sessao)
+                               numero_sessao=numero_sessao,
+                               codigo_ativacao=self._codigo_ativacao)
         conteudo = resp.json()
         return RespostaConsultarNumeroSessao.analisar(conteudo.get('retorno'))
 
