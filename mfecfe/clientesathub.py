@@ -374,3 +374,17 @@ class ClienteVfpeHub(FuncoesVFPE):
         )
         conteudo = resp.json()
         return conteudo.get('retorno')
+
+    def verificar_status_validador(self, cnpj, id_fila, numero_caixa,
+            chave_acesso_validador, integrador=False):
+
+        resp = self._http_post(
+            'verificarstatusvalidador',
+            chave_acesso_validador=chave_acesso_validador,
+            numero_caixa=numero_caixa,
+            cnpj=cnpj,
+            id_fila=id_fila,
+            caminho_integrador=integrador
+        )
+        conteudo = resp.json()
+        return conteudo.get('retorno')
